@@ -15,7 +15,6 @@ export const BackgroundGradientAnimation = ({
   blendingValue = "hard-light",
   children,
   className,
-  interactive = true,
   containerClassName,
 }: {
   gradientBackgroundStart?: string;
@@ -30,7 +29,6 @@ export const BackgroundGradientAnimation = ({
   blendingValue?: string;
   children?: React.ReactNode;
   className?: string;
-  interactive?: boolean;
   containerClassName?: string;
 }) => {
   const interactiveRef = useRef<HTMLDivElement>(null);
@@ -56,7 +54,7 @@ export const BackgroundGradientAnimation = ({
     document.body.style.setProperty("--pointer-color", pointerColor);
     document.body.style.setProperty("--size", size);
     document.body.style.setProperty("--blending-value", blendingValue);
-  }, []);
+  }, [gradientBackgroundStart, gradientBackgroundEnd, firstColor, secondColor, thirdColor, fourthColor, fifthColor, pointerColor, size, blendingValue]);
 
   useEffect(() => {
     function move() {
@@ -71,7 +69,7 @@ export const BackgroundGradientAnimation = ({
     }
 
     move();
-  }, [tgX, tgY]);
+  }, [tgX, tgY, curX, curY]);
 
   const handleMouseMove = (event: React.MouseEvent<HTMLDivElement>) => {
     if (interactiveRef.current) {
@@ -92,6 +90,7 @@ export const BackgroundGradientAnimation = ({
         "h-screen w-screen relative overflow-hidden top-0 left-0 bg-[linear-gradient(40deg,var(--gradient-background-start),var(--gradient-background-end))]",
         containerClassName
       )}
+      onMouseMove={handleMouseMove}
     >
       <svg className="hidden">
         <defs>

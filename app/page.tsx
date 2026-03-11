@@ -103,7 +103,7 @@ const images = [
 
 export default function Home() {
   return (
-    <main className="pt-10 flex min-h-screen flex-col items-center justify-between">
+    <main className="pt-20 flex min-h-screen flex-col items-center justify-between space-y-32">
       <BackgroundLines>
         <div className="z-100 inset-0 flex items-center justify-center text-white lg:pt-36 px-10 lg:px-40 text-center">
           <div className="flex flex-col lg:flex-row gap-4 items-center justify-center">
