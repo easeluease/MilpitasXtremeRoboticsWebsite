@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { IBM_Plex_Mono } from "next/font/google";
 
-import React from "react";
+import React, { useEffect } from "react";
 import { BackgroundGradientAnimation } from "@/components/ui/background-gradient-animation";
 import { BackgroundLines } from "@/components/ui/background-lines";
 import { CardBody, CardContainer, CardItem } from "@/components/ui/3d-card";
@@ -102,37 +102,57 @@ const images = [
 ]
 
 export default function Home() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <main className="pt-20 flex min-h-screen flex-col items-center justify-between space-y-32">
-      <BackgroundLines>
+      <BackgroundLines className="-mt-18">
         <div className="z-100 inset-0 flex items-center justify-center text-white lg:pt-36 px-10 lg:px-40 text-center">
           <div className="flex flex-col lg:flex-row gap-4 items-center justify-center">
             <div className="basis-3/5 flex flex-col items-center justify-center">
               <motion.div
-                initial={{ opacity: 0, y: 50 }}
+                initial={{ opacity: 0, y: 100 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 2 }}
+                transition={{ duration: 3 }}
                 viewport={{ once: true }}
+                suppressHydrationWarning
                 className="font-bold text-6xl lg:text-7xl bg-clip-text text-transparent drop-shadow-2xl bg-gradient-to-b from-white to-white/40">
                 Milpitas Xtreme Robotics
               </motion.div>
-              <CardSpotlight className="mt-8 lg:mt-24 lg:w-2/3">
-                <div className={ibmPlexMono.className}>
-                  <div className="relative z-20">
-                    <p className="text-3xl font-bold pb-4">
-                      Hello World!
-                    </p>
-                    <p>
-                      We are a student-run robotics club from Milpitas High School. We compete in VEX, FTC, and looking to compete in FRC in the future. We are a group of diverse, fun, and passionate students who love STEM and robotics. ✨
-                    </p>
-                  </div>
-                </div>
-              </CardSpotlight>
+              <button
+                onClick={() => {
+                  const aboutSection = document.getElementById('about-section');
+                  if (aboutSection) {
+                    const top = aboutSection.offsetTop - 5;
+                    window.scrollTo({ top, behavior: 'smooth' });
+                  }
+                }}
+                className="mt-24 hover:opacity-80 transition-opacity cursor-pointer bg-transparent border-none p-0"
+                style={{
+                  opacity: 1,
+                  animation: 'fadeInUp 1.5s ease-out 1.8s both'
+                }}>
+                <img src="/scroll-down.svg" alt="Scroll Down" width={200} height={60} style={{ display: 'block' }} />
+              </button>
+              <style>{`
+                @keyframes fadeInUp {
+                  from {
+                    opacity: 0;
+                    transform: translateY(20px);
+                  }
+                  to {
+                    opacity: 1;
+                    transform: translateY(0);
+                  }
+                }
+              `}</style>
             </div>
           </div>
         </div>
       </BackgroundLines>
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 px-10 lg:px-40 pb-24 lg:pb-48 w-full items-center justify-center">
+      <div id="about-section" className="grid grid-cols-1 lg:grid-cols-2 gap-24 px-10 lg:px-40 pb-24 lg:pb-48 w-full items-center justify-center">
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}

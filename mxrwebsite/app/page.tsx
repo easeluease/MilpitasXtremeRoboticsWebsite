@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { IBM_Plex_Mono } from "next/font/google";
 
-import React from "react";
+import React, { useEffect } from "react";
 import { BackgroundGradientAnimation } from "@/components/ui/background-gradient-animation";
 import { BackgroundLines } from "@/components/ui/background-lines";
 import { CardBody, CardContainer, CardItem } from "@/components/ui/3d-card";
@@ -102,6 +102,10 @@ const images = [
 ]
 
 export default function Home() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <main className="pt-10 flex min-h-screen flex-col items-center justify-between">
       <BackgroundLines>
