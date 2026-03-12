@@ -168,4 +168,8 @@
   body {
     @apply bg-background text-foreground;
   }
+  ::selection {
+    background-color: #000;
+    color: #fff;
+  }
 }

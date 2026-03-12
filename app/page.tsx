@@ -107,8 +107,9 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="pt-20 flex min-h-screen flex-col items-center justify-between space-y-32" style={{ zoom: '0.9' }}>
-      <BackgroundLines className="-mt-18">
+    <main className="flex min-h-screen flex-col items-center justify-between space-y-32" style={{ zoom: '0.9' }}>
+      <div className="hero-sticky w-full overflow-hidden">
+        <BackgroundLines className="-mt-18">
         <div className="z-100 inset-0 flex items-center justify-center text-white lg:pt-36 px-10 lg:px-40 text-center">
           <div className="flex flex-col lg:flex-row gap-4 items-center justify-center">
             <div className="basis-3/5 flex flex-col items-center justify-center">
@@ -125,8 +126,27 @@ export default function Home() {
                 onClick={() => {
                   const aboutSection = document.getElementById('about-section');
                   if (aboutSection) {
-                    const top = aboutSection.offsetTop - 5;
-                    window.scrollTo({ top, behavior: 'smooth' });
+                    const targetTop = aboutSection.offsetTop - 5;
+                    const duration = 1800; // 1.8 seconds in ms
+                    const startTop = window.scrollY;
+                    const distance = targetTop - startTop;
+                    const startTime = Date.now();
+                    
+                    const animate = () => {
+                      const elapsed = Date.now() - startTime;
+                      const progress = Math.min(elapsed / duration, 1);
+                      // Easing function for smooth animation
+                      const easeProgress = progress < 0.5 
+                        ? 2 * progress * progress 
+                        : -1 + (4 - 2 * progress) * progress;
+                      window.scrollTo(0, startTop + distance * easeProgress);
+                      
+                      if (progress < 1) {
+                        requestAnimationFrame(animate);
+                      }
+                    };
+                    
+                    animate();
                   }
                 }}
                 className="mt-24 hover:opacity-80 transition-opacity cursor-pointer bg-transparent border-none p-0"
@@ -152,7 +172,8 @@ export default function Home() {
           </div>
         </div>
       </BackgroundLines>
-      <div id="about-section" className="grid grid-cols-1 lg:grid-cols-2 gap-24 px-10 lg:px-40 pb-24 lg:pb-48 w-full items-center justify-center">
+      </div>
+      <div id="about-section" className="about-section-black grid grid-cols-1 lg:grid-cols-2 gap-24 px-10 lg:px-40 pb-24 lg:pb-48 w-full items-center justify-center">
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}

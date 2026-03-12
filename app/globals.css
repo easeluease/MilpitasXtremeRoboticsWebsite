@@ -168,4 +168,25 @@
   body {
     @apply bg-background text-foreground;
   }
+  ::selection {
+    background-color: lab(0% 0 0);
+    color: #fff;
+  }
+}
+
+#header {
+  @apply fixed w-full top-0 z-50;
+}
+
+#content {
+  @apply pt-20;
+}
+
+.hero-sticky {
+  position: relative;
+  z-index: 20;
+}
+
+.about-section-black {
+  background-color: #000;
 }

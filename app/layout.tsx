@@ -31,8 +31,10 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased overflow-x-hidden`}
         suppressHydrationWarning
       >
-          <div className="relative w-full">
+          <div id="header" className="relative w-full z-50">
             <NavbarDemo />
+          </div>
+          <div id="content">
             {children}
           </div>
           <Analytics />
