@@ -107,7 +107,7 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="pt-20 flex min-h-screen flex-col items-center justify-between space-y-32">
+    <main className="pt-20 flex min-h-screen flex-col items-center justify-between space-y-32" style={{ zoom: '0.9' }}>
       <BackgroundLines className="-mt-18">
         <div className="z-100 inset-0 flex items-center justify-center text-white lg:pt-36 px-10 lg:px-40 text-center">
           <div className="flex flex-col lg:flex-row gap-4 items-center justify-center">
