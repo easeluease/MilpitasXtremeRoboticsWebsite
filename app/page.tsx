@@ -23,37 +23,6 @@ const ibmPlexMono = IBM_Plex_Mono({
   subsets: ["latin"],
 });
 
-const blogPosts = [
-  {
-    quote:
-      "yesterday's comp was great, we got last place and 1095r shat on our robot and now theres 1095r shit all over our shitty bot",
-    name: "Milpitas Xtreme Robotics",
-    title: "4/20/69",
-  },
-  {
-    quote:
-      "yo:gurt gurt:yo what you are doing is really smart but also really dangerous gurt: sybau",
-    name: "Justin Chung",
-    title: "4/13/25",
-  },
-  {
-    quote: "yo lwk ts pmo icl bru 💔🥀🪫",
-    name: "Oilver Ma",
-    title: "4/13/25",
-  },
-  {
-    quote:
-      "don't try to play the fool with me, no it's very bad",
-    name: "Sriram Sivakumar",
-    title: "4/13/25",
-  },
-  {
-    quote:
-      "i am devexon mamixon",
-    name: "Devesh Mamidi",
-    title: "4/13/25",
-  },
-];
 
 const typeWriterWords = [
   {
@@ -115,7 +84,7 @@ export default function Home() {
             <div className="basis-3/5 flex flex-col items-center justify-center">
               <motion.div
                 initial={{ opacity: 0, y: 100 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                whileInView={{ opacity: 5, y: 50 }}
                 transition={{ duration: 3 }}
                 viewport={{ once: true }}
                 suppressHydrationWarning
@@ -126,8 +95,8 @@ export default function Home() {
                 onClick={() => {
                   const aboutSection = document.getElementById('about-section');
                   if (aboutSection) {
-                    const targetTop = aboutSection.offsetTop - 5;
-                    const duration = 1800; // 1.8 seconds in ms
+                    const targetTop = aboutSection.offsetTop - 67;
+                    const duration = 1800;
                     const startTop = window.scrollY;
                     const distance = targetTop - startTop;
                     const startTime = Date.now();
@@ -135,7 +104,6 @@ export default function Home() {
                     const animate = () => {
                       const elapsed = Date.now() - startTime;
                       const progress = Math.min(elapsed / duration, 1);
-                      // Easing function for smooth animation
                       const easeProgress = progress < 0.5 
                         ? 2 * progress * progress 
                         : -1 + (4 - 2 * progress) * progress;
@@ -149,7 +117,7 @@ export default function Home() {
                     animate();
                   }
                 }}
-                className="mt-24 hover:opacity-80 transition-opacity cursor-pointer bg-transparent border-none p-0"
+                className="mt-32 hover:opacity-80 transition-opacity cursor-pointer bg-transparent border-none p-0"
                 style={{
                   opacity: 1,
                   animation: 'fadeInUp 1.5s ease-out 1.8s both'
@@ -176,15 +144,10 @@ export default function Home() {
       <div id="about-section" className="about-section-black grid grid-cols-1 lg:grid-cols-2 gap-24 px-10 lg:px-40 pb-24 lg:pb-48 w-full items-center justify-center">
           <motion.div
             initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 2 }}
+            whileInView={{ opacity: 2 }}
+            transition={{ duration: 5}}
             viewport={{ once: true }}
           >
-            <InfiniteMovingCards
-              items={blogPosts}
-              direction="right"
-              speed="slow"
-            />
           </motion.div>
           <CardSpotlight>
             <div className={ibmPlexMono.className}>
