@@ -8,6 +8,15 @@ import { BackgroundLines } from "@/components/ui/background-lines";
 import { TypewriterEffect } from "@/components/ui/typewriter-effect";
 import { HeroHighlight } from "@/components/ui/hero-highlight";
 import { CometCard } from "@/components/ui/comet-card";
+import { HoverBorderGradient } from "@/components/ui/hover-border-gradient";
+import { LinkPreview } from "@/components/ui/link-preview";
+import {
+  DiscordLogoIcon,
+  GitHubLogoIcon,
+  InstagramLogoIcon,
+  LinkedInLogoIcon,
+  VideoIcon,
+} from "@radix-ui/react-icons";
 import Link from "next/link";
 
 import { motion } from "framer-motion";
@@ -20,11 +29,11 @@ const ibmPlexMono = IBM_Plex_Mono({
 const typeWriterWords = [
   {
     text: "About",
-    className: "text-[#111111]",
+    className: "text-[#F3F4F6]",
   },
   {
     text: "Us",
-    className: "text-[#111111]",
+    className: "text-[#F3F4F6]",
   }
 ];
 
@@ -81,6 +90,30 @@ const outreachTypewriterWords = [
 ];
 
 export default function Home() {
+  const smoothScrollToElement = (element: HTMLElement, duration = 1400) => {
+    const startY = window.scrollY;
+    const targetY = element.getBoundingClientRect().top + window.scrollY;
+    const distance = targetY - startY;
+    const startTime = performance.now();
+
+    const easeInOutCubic = (t: number) =>
+      t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+
+    const animate = (currentTime: number) => {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const easedProgress = easeInOutCubic(progress);
+
+      window.scrollTo(0, startY + distance * easedProgress);
+
+      if (progress < 1) {
+        window.requestAnimationFrame(animate);
+      }
+    };
+
+    window.requestAnimationFrame(animate);
+  };
+
   return (
     <main className="flex min-h-screen flex-col items-center">
       {/* SECTION 1: The Sticky Hero */}
@@ -103,8 +136,8 @@ export default function Home() {
                     onClick={() => {
                       const aboutSection = document.getElementById('about-section');
                       if (aboutSection) {
-                        aboutSection.scrollIntoView({ behavior: "smooth", block: "start" });
-                        }
+                        smoothScrollToElement(aboutSection, 1500);
+                      }
                     }}
                     className="mt-45 hover:opacity-80 transition-opacity cursor-pointer bg-transparent border-none p-0"
                     style={{
@@ -136,8 +169,13 @@ export default function Home() {
       <div className="relative z-10 w-full bg-[#0A0A0A] overflow-visible">
         <div className="flex flex-col items-center space-y-0">
           {/* SECTION 2: About Section */}
-          <div id="about-section" className="sticky top-0 z-0 flex flex-col items-center justify-center py-15 lg:py-25 w-full px-10 lg:px-40 min-h-screen pb-[calc(32rem+232px)] bg-[rgb(200,200,200)]">
-            <div className="max-w-4xl">
+          <div id="about-section" className="sticky top-0 z-0 flex flex-col items-center justify-center py-15 lg:py-25 w-full px-10 lg:px-40 min-h-screen pb-[calc(32rem+232px)] overflow-hidden">
+            <div
+              aria-hidden
+              className="absolute inset-0 bg-[url('/Images/ClubPicture.png')] bg-cover bg-center blur-[3px] scale-105"
+            ></div>
+            <div aria-hidden className="absolute inset-0 bg-black/55"></div>
+            <div className="relative z-10 max-w-4xl">
               <motion.div
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
@@ -145,7 +183,7 @@ export default function Home() {
                 viewport={{ once: true }}
                 className="mb-16 text-center"
               >
-                <TypewriterEffect words={typeWriterWords} className="justify-center text-5xl lg:text-6xl font-bold text-[#111111]" />
+                <TypewriterEffect words={typeWriterWords} className="justify-center text-5xl lg:text-6xl font-bold text-[#F3F4F6]" />
               </motion.div>
               
               <motion.div
@@ -153,7 +191,7 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1, delay: 0.3 }}
                 viewport={{ once: true }}
-                className={`${ibmPlexMono.className} text-center space-y-6 text-[#666666]`}
+                className={`${ibmPlexMono.className} text-center space-y-6 text-[#E4E4E7]`}
               >
                 <p className="text-base leading-relaxed">
                   In a nutshell, Milpitas Xtreme Robotics is the official robotics club of Milpitas High. We provide the students of Milpitas High a chance to discover, create, or nurture a passion for what the Silicon Valley is famed for - technology. MXR offer our members a chance to use the skills they learn in their classrooms on something more tangible. However, we also highly promote certain key concepts in our club; productive teamwork with fellow club members, innovation in engineering techniques used, and ingenuity in overcoming obstacles. Milpitas Xtreme Robotics encourages our members to get off their computers and out of their videos games, and instead take a shot at bringing to life our very own creations.
@@ -178,15 +216,38 @@ export default function Home() {
 
             {/* Program 1 - Number/Text Left, Image Right */}
             <div
+              id="vex"
               className="grid grid-cols-1 lg:grid-cols-2 gap-2 w-full items-start"
             >
               <div className="flex flex-col justify-start space-y-6 pt-0">
                 <div className="text-9xl font-bold text-[#A1A1AA] -mb-8 leading-none">01</div>
                 <div>
                   <TypewriterEffect words={vexTypewriterWords} className="justify-start whitespace-nowrap text-3xl lg:text-4xl font-bold text-[#E4E4E7] mb-6" />
-                  <p className={`${ibmPlexMono.className} text-[#666666] leading-relaxed text-base`}>
-                    VEX Robotics is a fast-paced competition where teams design, build, and program custom robots to compete in head-to-head matches on a dynamic game field. Students focus on mechanical design, autonomous programming, and strategic gameplay throughout the season.
-                  </p>
+                  <div className={`${ibmPlexMono.className} text-[#666666] leading-relaxed text-base`}>
+                    <LinkPreview
+                      url="https://www.vexrobotics.com/competition?srsltid=AfmBOorWHCQCMcI5b7pOVo5EMUoZbvNnlHV8y-QmunTlb2qpb8Ux5mif"
+                      className="text-[#E4E4E7] underline decoration-[#A1A1AA] underline-offset-4"
+                      width={170}
+                      height={105}
+                      quality={60}
+                    >
+                      VEX Robotics
+                    </LinkPreview>{" "}
+                    is a fast-paced competition where teams design, build, and program custom robots to compete in head-to-head matches on a dynamic game field. Students focus on mechanical design, autonomous programming, and strategic gameplay throughout the season.
+                  </div>
+                  <div className="mt-6">
+                    <Link
+                      href="/#vex"
+                      className="inline-block"
+                    >
+                      <HoverBorderGradient
+                        containerClassName="rounded-full"
+                        className="bg-[#0B0B0B] text-[#E4E4E7] px-5 py-2 text-sm lg:text-base"
+                      >
+                        <span>Learn More</span>
+                      </HoverBorderGradient>
+                    </Link>
+                  </div>
                 </div>
               </div>
               <motion.div 
@@ -212,15 +273,38 @@ export default function Home() {
 
             {/* Program 2 - Image Left, Text Right */}
             <div
+              id="ftc"
               className="grid grid-cols-1 lg:grid-cols-2 gap-2 w-full items-start"
             >
               <div className="order-2 flex flex-col justify-start space-y-6 pt-0 z-10">
                 <div className="text-9xl font-bold text-[#A1A1AA] -mb-8 leading-none">02</div>
                 <div>
                   <TypewriterEffect words={ftcTypewriterWords} className="justify-start text-3xl lg:text-4xl font-bold text-[#E4E4E7] mb-6" />
-                  <p className={`${ibmPlexMono.className} text-[#666666] leading-relaxed text-base`}>
-                    FIRST Tech Challenge (FTC) challenges teams to build robots using a modular kit system while emphasizing innovation, outreach, and engineering documentation. Teams compete in alliances and present their design process to judges alongside on-field performance.
-                  </p>
+                  <div className={`${ibmPlexMono.className} text-[#666666] leading-relaxed text-base`}>
+                    <LinkPreview
+                      url="https://www.firstinspires.org/programs/ftc/"
+                      className="text-[#E4E4E7] underline decoration-[#A1A1AA] underline-offset-4"
+                      width={170}
+                      height={105}
+                      quality={60}
+                    >
+                      FIRST Tech Challenge (FTC)
+                    </LinkPreview>{" "}
+                    challenges teams to build robots using a modular kit system while emphasizing innovation, outreach, and engineering documentation. Teams compete in alliances and present their design process to judges alongside on-field performance.
+                  </div>
+                  <div className="mt-6">
+                    <Link
+                      href="/#ftc"
+                      className="inline-block"
+                    >
+                      <HoverBorderGradient
+                        containerClassName="rounded-full"
+                        className="bg-[#0B0B0B] text-[#E4E4E7] px-5 py-2 text-sm lg:text-base"
+                      >
+                        <span>Learn More</span>
+                      </HoverBorderGradient>
+                    </Link>
+                  </div>
                 </div>
               </div>
               <motion.div 
@@ -246,6 +330,7 @@ export default function Home() {
 
             {/* Program 3 - Number/Text Left, Image Right */}
             <div
+              id="outreach"
               className="grid grid-cols-1 lg:grid-cols-2 gap-2 w-full items-start"
             >
               <div className="flex flex-col justify-start space-y-6 pt-0">
@@ -331,42 +416,61 @@ export default function Home() {
             </Link>
           </HeroHighlight>
 
-          {/* Footer */}
-          {/* desktop footer */}
-          <div className="relative z-30 hidden bg-neutral-900 w-full lg:flex flex-row items-start justify-center py-8 px-40">
-            <div className="basis-1/4 flex flex-col space-y-8">
-              <div className="flex flex-row items-center justify-start space-x-4">
-                <Image className="rounded-xl w-1/12" src="/logo.png" width={500} height={500} alt="logo"/>
-                <div className="font-bold text-lg text-[#E4E4E7]">Milpitas Xtreme Robotics</div>
+          <footer className="relative z-30 w-full bg-[#0B0B0D] border-t border-zinc-800/70">
+            <div className="mx-auto w-full max-w-screen-xl px-4 py-4 lg:py-5">
+              <div className="md:flex md:justify-between">
+                <div className="mb-4 md:mb-0">
+                  <Link href="/" className="flex items-center">
+                    <Image src="/logo.png" className="me-3 h-8 w-auto object-contain" width={1941} height={1564} alt="MXR Logo" />
+                    <span className="self-center whitespace-nowrap text-xl font-semibold text-[#E4E4E7]">Milpitas Xtreme Robotics</span>
+                  </Link>
+                </div>
+                <div>
+                  <ul className={`${ibmPlexMono.className} flex flex-nowrap items-center gap-5 overflow-x-auto whitespace-nowrap pb-1 text-sm font-medium text-[#D4D4D8]`}>
+                    <li className="shrink-0">
+                      <LinkPreview url="/about-us" className="text-[#D4D4D8] hover:text-[#E4E4E7]" width={160} height={100} isStatic imageSrc="/Images/ClubPicture.png">About</LinkPreview>
+                    </li>
+                    <li className="shrink-0">
+                      <LinkPreview url="/#vex" className="text-[#D4D4D8] hover:text-[#E4E4E7]" width={160} height={100} isStatic imageSrc="/Images/vex.png">VEX</LinkPreview>
+                    </li>
+                    <li className="shrink-0">
+                      <LinkPreview url="/#ftc" className="text-[#D4D4D8] hover:text-[#E4E4E7]" width={160} height={100} isStatic imageSrc="/Images/FTC.jpg">FTC</LinkPreview>
+                    </li>
+                    <li className="shrink-0">
+                      <LinkPreview url="/#outreach" className="text-[#D4D4D8] hover:text-[#E4E4E7]" width={160} height={100} isStatic imageSrc="/logo.png">Outreach</LinkPreview>
+                    </li>
+                    <li className="shrink-0">
+                      <LinkPreview url="/sponsors" className="text-[#D4D4D8] hover:text-[#E4E4E7]" width={160} height={100} isStatic imageSrc="/team.png">Sponsors</LinkPreview>
+                    </li>
+                    <li className="shrink-0">
+                      <LinkPreview url="/#blog" className="text-[#D4D4D8] hover:text-[#E4E4E7]" width={160} height={100} isStatic imageSrc="/logo.png">Blog</LinkPreview>
+                    </li>
+                  </ul>
+                </div>
               </div>
-              <div className="w-full flex flex-col space-y-0">
-                <div className="text-md text-[#CFCFCF]">© 2025 Milpitas Xtreme Robotics</div>
-                <div className="text-md text-[#CFCFCF]">All rights reserved</div>
-                <div className="text-md text-[#CFCFCF]">Made with ❤️ and 🧔🏽‍♀️</div>
+              <hr className="my-4 border-zinc-700/80 sm:mx-auto lg:my-5" />
+              <div className="sm:flex sm:items-center sm:justify-between">
+                <span className={`${ibmPlexMono.className} text-sm text-[#A1A1AA] sm:text-center`}>© 2026 Milpitas Xtreme Robotics. All Rights Reserved.</span>
+                <div className="mt-2 flex sm:mt-0 sm:justify-center">
+                  <a href="https://www.instagram.com/milpitasxrobotics/" target="_blank" rel="noopener noreferrer" className="text-[#9CA3AF] hover:text-[#E4E4E7] ms-4" aria-label="Instagram">
+                    <InstagramLogoIcon className="h-4 w-4" />
+                  </a>
+                  <a href="https://discord.gg/MZYKRq3cvw" target="_blank" rel="noopener noreferrer" className="text-[#9CA3AF] hover:text-[#E4E4E7] ms-4" aria-label="Discord">
+                    <DiscordLogoIcon className="h-4 w-4" />
+                  </a>
+                  <a href="https://www.youtube.com/@MilpitasXtremeRobotics" target="_blank" rel="noopener noreferrer" className="text-[#9CA3AF] hover:text-[#E4E4E7] ms-4" aria-label="YouTube">
+                    <VideoIcon className="h-4 w-4" />
+                  </a>
+                  <a href="https://www.linkedin.com/company/milpitas-xtreme-robotics/posts/?feedView=all" target="_blank" rel="noopener noreferrer" className="text-[#9CA3AF] hover:text-[#E4E4E7] ms-4" aria-label="LinkedIn">
+                    <LinkedInLogoIcon className="h-4 w-4" />
+                  </a>
+                  <a href="https://github.com/milpitasxr" target="_blank" rel="noopener noreferrer" className="text-[#9CA3AF] hover:text-[#E4E4E7] ms-4" aria-label="GitHub">
+                    <GitHubLogoIcon className="h-4 w-4" />
+                  </a>
+                </div>
               </div>
             </div>
-            <div className="basis-3/4 font-bold flex flex-row space-x-12 items-center justify-start text-[#E4E4E7]">
-              <Link href="#home" className="text-lg hover:text-neutral-400 transition">Home</Link>
-              <Link href="#vex" className="text-lg hover:text-neutral-400 transition">VEX</Link>
-              <Link href="#ftc" className="text-lg hover:text-neutral-400 transition">FTC</Link>
-              <Link href="#frc" className="text-lg hover:text-neutral-400 transition">FRC</Link>
-            </div>
-          </div>
-          {/* mobile footer */}
-          <div className="relative z-30 lg:hidden bg-neutral-900 w-full flex flex-col space-y-4 items-start justify-center py-8 px-12">
-            <div className="font-bold text-lg text-[#E4E4E7]">Milpitas Xtreme Robotics</div>
-            <div className="w-full flex flex-col space-y-0">
-              <div className="text-md text-[#CFCFCF]">© 2025 Milpitas Xtreme Robotics</div>
-              <div className="text-md text-[#CFCFCF]">All rights reserved</div>
-              <div className="text-md text-[#CFCFCF]">Made with ❤️ and 🧔🏽‍♀️</div>
-            </div>
-            <div className="font-bold flex flex-row space-x-8 items-center justify-start text-[#E4E4E7]">
-              <Link href="#home" className="text-sm hover:text-neutral-400 transition">Home</Link>
-              <Link href="#vex" className="text-sm hover:text-neutral-400 transition">VEX</Link>
-              <Link href="#ftc" className="text-sm hover:text-neutral-400 transition">FTC</Link>
-              <Link href="#frc" className="text-sm hover:text-neutral-400 transition">FRC</Link>
-            </div>
-          </div>
+          </footer>
         </div>
       </div>
     </main>
