@@ -83,8 +83,9 @@ export default function Home() {
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 1.2 }}
                     viewport={{ once: true }}
-                    className="font-bold text-6xl lg:text-7xl bg-clip-text text-transparent drop-shadow-2xl bg-gradient-to-b from-[#EAEAEA] to-[#B9B9B9]">
-                    Milpitas Xtreme Robotics
+                    className="inline-block text-center font-bold text-6xl lg:text-7xl leading-[0.95] bg-clip-text text-transparent drop-shadow-2xl bg-gradient-to-b from-[#EAEAEA] to-[#B9B9B9]">
+                    <span className="block whitespace-nowrap">Milpitas Xtreme</span>
+                    <span className="block whitespace-nowrap">Robotics</span>
                   </motion.div>
                   <button
                     onClick={() => {
@@ -93,7 +94,7 @@ export default function Home() {
                         aboutSection.scrollIntoView({ behavior: "smooth", block: "start" });
                       }
                     }}
-                    className="mt-24 hover:opacity-80 transition-opacity cursor-pointer bg-transparent border-none p-0"
+                    className="mt-42 hover:opacity-80 transition-opacity cursor-pointer bg-transparent border-none p-0"
                     style={{
                       opacity: 1,
                       animation: 'fadeInUp 1.5s ease-out 1.8s both'
