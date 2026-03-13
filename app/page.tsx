@@ -44,6 +44,10 @@ const vexTypewriterWords = [
     text: "Robotics",
     className: "text-[#E4E4E7]",
   },
+  {
+    text: "Compitition",
+    className: "text-[#E4E4E7]",
+  },
 ];
 
 const ftcTypewriterWords = [
@@ -64,6 +68,14 @@ const ftcTypewriterWords = [
 const outreachTypewriterWords = [
   {
     text: "Outreach",
+    className: "text-[#E4E4E7]",
+  },
+  {
+    text: "&",
+    className: "text-[#E4E4E7]",
+  },
+  {
+    text: "Events",
     className: "text-[#E4E4E7]",
   },
 ];
@@ -92,7 +104,7 @@ export default function Home() {
                       const aboutSection = document.getElementById('about-section');
                       if (aboutSection) {
                         aboutSection.scrollIntoView({ behavior: "smooth", block: "start" });
-                      }
+                        }
                     }}
                     className="mt-45 hover:opacity-80 transition-opacity cursor-pointer bg-transparent border-none p-0"
                     style={{
@@ -144,10 +156,7 @@ export default function Home() {
                 className={`${ibmPlexMono.className} text-center space-y-6 text-[#666666]`}
               >
                 <p className="text-base leading-relaxed">
-                  We are a robotics club that competes in VEX and FTC. Around 15 years old now, our club takes pride in teamwork and problem solving. We have competed in VEX for over 5 years and have made it to states and worlds. We recently expanded to FTC and included many new members. We are looking to expand to FRC in the future.
-                </p>
-                <p className="text-base leading-relaxed">
-                  Apart from competitive robotics, we also have many outreach programs. We teach SPIKE lego robotics to john sinnot elementery school students. We have also founded the M.A.R.S. program, which is robotics workshop for elementary school students across MUSD. We also enhance our school spirit by participating in school events and activities. We recently created a ferris wheel for the school's homecoming event. For more details, visit our blog!
+                  In a nutshell, Milpitas Xtreme Robotics is the official robotics club of Milpitas High. We provide the students of Milpitas High a chance to discover, create, or nurture a passion for what the Silicon Valley is famed for - technology. MXR offer our members a chance to use the skills they learn in their classrooms on something more tangible. However, we also highly promote certain key concepts in our club; productive teamwork with fellow club members, innovation in engineering techniques used, and ingenuity in overcoming obstacles. Milpitas Xtreme Robotics encourages our members to get off their computers and out of their videos games, and instead take a shot at bringing to life our very own creations.
                 </p>
               </motion.div>
             </div>
@@ -174,9 +183,9 @@ export default function Home() {
               <div className="flex flex-col justify-start space-y-6 pt-0">
                 <div className="text-9xl font-bold text-[#A1A1AA] -mb-8 leading-none">01</div>
                 <div>
-                  <TypewriterEffect words={vexTypewriterWords} className="justify-start text-3xl lg:text-4xl font-bold text-[#E4E4E7] mb-6" />
+                  <TypewriterEffect words={vexTypewriterWords} className="justify-start whitespace-nowrap text-3xl lg:text-4xl font-bold text-[#E4E4E7] mb-6" />
                   <p className={`${ibmPlexMono.className} text-[#666666] leading-relaxed text-base`}>
-                    Placeholder
+                    VEX Robotics is a fast-paced competition where teams design, build, and program custom robots to compete in head-to-head matches on a dynamic game field. Students focus on mechanical design, autonomous programming, and strategic gameplay throughout the season.
                   </p>
                 </div>
               </div>
@@ -187,14 +196,14 @@ export default function Home() {
                 viewport={{ once: true }}
                 className="flex justify-center lg:justify-end pt-28"
               >
-                <CometCard rotateDepth={14} translateDepth={10} className="rounded-full overflow-visible">
-                  <div className="relative flex h-80 w-80 items-center justify-center overflow-visible">
+                <CometCard rotateDepth={24} translateDepth={24} className="rounded-full overflow-visible">
+                  <div className="relative flex h-64 w-64 items-center justify-center rounded-full overflow-hidden bg-[#111111]">
                     <Image
-                      src="/logo.png"
+                      src="/Images/vex.png"
                       alt="VEX Robotics"
                       width={320}
                       height={320}
-                      className="relative z-10 h-72 w-72 object-contain"
+                      className="relative z-10 h-56 w-56 rounded-full object-cover"
                     />
                   </div>
                 </CometCard>
@@ -210,7 +219,7 @@ export default function Home() {
                 <div>
                   <TypewriterEffect words={ftcTypewriterWords} className="justify-start text-3xl lg:text-4xl font-bold text-[#E4E4E7] mb-6" />
                   <p className={`${ibmPlexMono.className} text-[#666666] leading-relaxed text-base`}>
-                    Placeholder
+                    FIRST Tech Challenge (FTC) challenges teams to build robots using a modular kit system while emphasizing innovation, outreach, and engineering documentation. Teams compete in alliances and present their design process to judges alongside on-field performance.
                   </p>
                 </div>
               </div>
@@ -221,14 +230,14 @@ export default function Home() {
                 viewport={{ once: true }}
                 className="order-1 flex justify-center lg:justify-start pt-28"
               >
-                <CometCard rotateDepth={14} translateDepth={10} className="rounded-full overflow-visible">
-                  <div className="relative flex h-80 w-80 items-center justify-center overflow-visible">
+                <CometCard rotateDepth={24} translateDepth={24} className="rounded-full overflow-visible">
+                  <div className="relative flex h-64 w-64 items-center justify-center rounded-full overflow-hidden bg-[#111111]">
                     <Image
-                      src="/logo.png"
+                      src="/Images/FTC.jpg"
                       alt="First Tech Competition"
                       width={320}
                       height={320}
-                      className="relative z-10 h-72 w-72 object-contain"
+                      className="relative z-10 h-56 w-56 rounded-full object-cover"
                     />
                   </div>
                 </CometCard>
@@ -242,7 +251,7 @@ export default function Home() {
               <div className="flex flex-col justify-start space-y-6 pt-0">
                 <div className="text-9xl font-bold text-[#A1A1AA] -mb-8 leading-none">03</div>
                 <div>
-                  <TypewriterEffect words={outreachTypewriterWords} className="justify-start text-3xl lg:text-4xl font-bold text-[#E4E4E7] mb-6" />
+                  <TypewriterEffect words={outreachTypewriterWords} className="justify-start w-full text-left text-3xl lg:text-4xl font-bold text-[#E4E4E7] mb-6" />
                   <p className={`${ibmPlexMono.className} text-[#666666] leading-relaxed text-base`}>
                     Placeholder
                   </p>
@@ -255,14 +264,14 @@ export default function Home() {
                 viewport={{ once: true }}
                 className="flex justify-center lg:justify-end pt-28"
               >
-                <CometCard rotateDepth={14} translateDepth={10} className="rounded-full overflow-visible">
-                  <div className="relative flex h-80 w-80 items-center justify-center overflow-visible">
+                <CometCard rotateDepth={24} translateDepth={24} className="rounded-full overflow-visible">
+                  <div className="relative flex h-64 w-64 items-center justify-center rounded-full overflow-hidden bg-[#111111]">
                     <Image
                       src="/logo.png"
                       alt="Outreach & Education"
                       width={320}
                       height={320}
-                      className="relative z-10 h-72 w-72 object-contain"
+                      className="relative z-10 h-56 w-56 rounded-full object-cover"
                     />
                   </div>
                 </CometCard>

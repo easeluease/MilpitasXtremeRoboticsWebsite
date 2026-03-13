@@ -79,12 +79,12 @@ export const CometCard = ({
           translateX,
           translateY,
           boxShadow:
-            "rgba(0, 0, 0, 0.12) 0px 20px 40px 0px, rgba(0, 0, 0, 0.2) 0px 8px 20px 0px",
+            "rgba(255, 255, 255, 0.14) 0px -14px 30px 0px inset, rgba(0, 0, 0, 0.35) 0px 26px 56px 0px, rgba(0, 0, 0, 0.24) 0px 12px 28px 0px",
         }}
         initial={{ scale: 1, z: 0 }}
         whileHover={{
-          scale: 1.06,
-          z: 40,
+          scale: 1.1,
+          z: 70,
           transition: { duration: 0.2 },
         }}
         className="relative rounded-full"
