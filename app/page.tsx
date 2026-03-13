@@ -74,13 +74,13 @@ export default function Home() {
       {/* SECTION 1: The Sticky Hero */}
       <div className="sticky top-20 z-0 h-screen w-full overflow-hidden">
         <div className="hero-sticky w-full overflow-hidden">
-          <BackgroundLines className="-mt-18">
+          <BackgroundLines className="mt-8 lg:-mt-20">
             <div className="z-100 inset-0 flex items-center justify-center text-white lg:pt-36 px-10 lg:px-40 text-center">
               <div className="flex flex-col lg:flex-row gap-4 items-center justify-center">
                 <div className="basis-3/5 flex flex-col items-center justify-center">
                   <motion.div
-                    initial={{ opacity: 0, y: 100 }}
-                    whileInView={{ opacity: 1, y: 0 }}
+                    initial={{ opacity: 0, y: 150 }}
+                    whileInView={{ opacity: 1, y: 50 }}
                     transition={{ duration: 1.2 }}
                     viewport={{ once: true }}
                     className="inline-block text-center font-bold text-6xl lg:text-7xl leading-[0.95] bg-clip-text text-transparent drop-shadow-2xl bg-gradient-to-b from-[#EAEAEA] to-[#B9B9B9]">
@@ -94,7 +94,7 @@ export default function Home() {
                         aboutSection.scrollIntoView({ behavior: "smooth", block: "start" });
                       }
                     }}
-                    className="mt-42 hover:opacity-80 transition-opacity cursor-pointer bg-transparent border-none p-0"
+                    className="mt-45 hover:opacity-80 transition-opacity cursor-pointer bg-transparent border-none p-0"
                     style={{
                       opacity: 1,
                       animation: 'fadeInUp 1.5s ease-out 1.8s both'
