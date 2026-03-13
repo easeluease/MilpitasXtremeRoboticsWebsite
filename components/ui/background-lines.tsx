@@ -17,7 +17,7 @@ export const BackgroundLines = ({
   return (
     <div
       className={cn(
-        "h-full lg:h-screen w-full bg-background",
+        "relative h-full lg:h-screen w-full bg-background",
         className
       )}
     >
@@ -98,7 +98,7 @@ const SVG = ({
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1 }}
-      className="absolute inset-0 w-full"
+      className="pointer-events-none absolute inset-0 w-full"
     >
       {paths.map((path, idx) => (
         <motion.path

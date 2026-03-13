@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
 import { NavbarDemo } from "@/components/navbar";
+import ScrollReset from "@/components/scroll-reset";
 import { Analytics } from "@vercel/analytics/next";
 
 const geistSans = Geist({
@@ -31,6 +32,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased overflow-x-hidden`}
         suppressHydrationWarning
       >
+          <ScrollReset />
           <div id="header" className="relative w-full z-50">
             <NavbarDemo />
           </div>
