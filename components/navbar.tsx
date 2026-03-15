@@ -27,36 +27,36 @@ export function NavbarDemo() {
       name: "About",
       link: "/about-us",
       children: [
-        { name: "Officers", link: "/#officers" },
-        { name: "Achievements", link: "/#achievements" },
+        { name: "Officers", link: "/about-us/officers" },
+        { name: "Achievements", link: "/about-us/achievements" },
       ],
     },
     {
       name: "VEX",
-      link: "/#vex",
+      link: "/programs/vex",
       children: [
-        { name: "TEAM 1669X", link: "/#vex-1669x" },
-        { name: "TEAM 1669Y", link: "/#vex-1669y" },
+        { name: "TEAM 1669X", link: "/programs/vex/1669x" },
+        { name: "TEAM 1669Y", link: "/programs/vex/1669y" },
       ],
     },
-    { name: "FTC", link: "/#ftc" },
+    { name: "FTC", link: "/programs/ftc" },
     {
       name: "Outreach",
-      link: "/#outreach",
+      link: "/outreach",
       children: [
-        { name: "MARS", link: "/#mars" },
-        { name: "LEGO ROBOTICS", link: "/#lego-robotics" },
+        { name: "MARS", link: "/outreach/mars" },
+        { name: "LEGO ROBOTICS", link: "/outreach/lego-robotics" },
       ],
     },
     { name: "Sponsors", link: "/sponsors" },
-    { name: "Blog", link: "/#blog" },
+    { name: "Blog", link: "/blog" },
     {
       name: "More",
       clickable: false,
       children: [
-        { name: "Contact", link: "/#contact" },
-        { name: "Socials", link: "/#socials" },
-        { name: "Constitution", link: "/#constitution" },
+        { name: "Contact", link: "/contact" },
+        { name: "Socials", link: "/socials" },
+        { name: "Constitution", link: "/constitution" },
       ],
     },
   ];
@@ -64,19 +64,20 @@ export function NavbarDemo() {
   const mobileNavItems = [
     { name: "Home", link: "/" },
     { name: "About", link: "/about-us" },
-    { name: "About - Officers", link: "/#officers" },
-    { name: "About - Achievements", link: "/#achievements" },
-    { name: "VEX - TEAM 1669X", link: "/#vex-1669x" },
-    { name: "VEX - TEAM 1669Y", link: "/#vex-1669y" },
-    { name: "FTC", link: "/#ftc" },
-    { name: "Outreach", link: "/#outreach" },
-    { name: "Outreach - MARS", link: "/#mars" },
-    { name: "Outreach - LEGO ROBOTICS", link: "/#lego-robotics" },
+    { name: "About - Officers", link: "/about-us/officers" },
+    { name: "About - Achievements", link: "/about-us/achievements" },
+    { name: "VEX", link: "/programs/vex" },
+    { name: "VEX - TEAM 1669X", link: "/programs/vex/1669x" },
+    { name: "VEX - TEAM 1669Y", link: "/programs/vex/1669y" },
+    { name: "FTC", link: "/programs/ftc" },
+    { name: "Outreach", link: "/outreach" },
+    { name: "Outreach - MARS", link: "/outreach/mars" },
+    { name: "Outreach - LEGO ROBOTICS", link: "/outreach/lego-robotics" },
     { name: "Sponsors", link: "/sponsors" },
-    { name: "Blog", link: "/#blog" },
-    { name: "More - Contact", link: "/#contact" },
-    { name: "More - Socials", link: "/#socials" },
-    { name: "More - Constitution", link: "/#constitution" },
+    { name: "Blog", link: "/blog" },
+    { name: "More - Contact", link: "/contact" },
+    { name: "More - Socials", link: "/socials" },
+    { name: "More - Constitution", link: "/constitution" },
   ];
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -84,46 +85,34 @@ export function NavbarDemo() {
 
   useEffect(() => {
     const resolveActiveItem = () => {
-      const hash = window.location.hash;
-
-      if (pathname === "/about-us") {
-        setActiveItem("About");
-        return;
-      }
-
-      if (pathname === "/sponsors") {
-        setActiveItem("Sponsors");
-        return;
-      }
-
-      if (!hash || hash === "#" || hash === "#home") {
+      if (!pathname || pathname === "/") {
         setActiveItem("Home");
         return;
       }
 
       for (const item of navItems) {
-        const itemHash = item.link?.includes("#") ? `#${item.link.split("#")[1]}` : item.link;
-
-        if (itemHash === hash) {
+        if (item.link === "/" && pathname === "/") {
           setActiveItem(item.name);
           return;
         }
 
-        if (
-          item.children?.some((child) => {
-            const childHash = child.link?.includes("#") ? `#${child.link.split("#")[1]}` : child.link;
-            return childHash === hash;
-          })
-        ) {
+        if (item.link && item.link !== "/" && pathname.startsWith(item.link)) {
+          setActiveItem(item.name);
+          return;
+        }
+
+        if (item.children?.some((child) => pathname.startsWith(child.link))) {
           setActiveItem(item.name);
           return;
         }
       }
+
+      setActiveItem("Home");
     };
 
     resolveActiveItem();
-    window.addEventListener("hashchange", resolveActiveItem);
-    return () => window.removeEventListener("hashchange", resolveActiveItem);
+    window.addEventListener("popstate", resolveActiveItem);
+    return () => window.removeEventListener("popstate", resolveActiveItem);
   }, [pathname]);
 
   useLayoutEffect(() => {
@@ -226,7 +215,7 @@ export function NavbarDemo() {
                   ) : (
                     <Link href={item.link || "#"} onClick={() => setActiveItem(item.name)}>{item.name}</Link>
                   )}
-                  <div className="absolute left-1/2 top-full z-50 hidden min-w-[180px] -translate-x-1/2 rounded-md border border-neutral-800 bg-neutral-950 p-2 group-hover:block">
+                  <div className="absolute left-1/2 top-full z-50 hidden min-w-45 -translate-x-1/2 rounded-md border border-neutral-800 bg-neutral-950 p-2 group-hover:block">
                     {item.children.map((child, childIdx) => (
                       <Link
                         key={`desktop-child-${childIdx}`}

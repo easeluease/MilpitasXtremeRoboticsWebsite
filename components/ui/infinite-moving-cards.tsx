@@ -1,6 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 import React, { useEffect, useState } from "react";
 
 export const InfiniteMovingCards = ({
@@ -11,9 +12,11 @@ export const InfiniteMovingCards = ({
   className,
 }: {
   items: {
-    quote: string;
+    quote?: string;
     name: string;
     title: string;
+    imageSrc?: string;
+    imageAlt?: string;
   }[];
   direction?: "left" | "right";
   speed?: "fast" | "normal" | "slow";
@@ -74,7 +77,7 @@ export const InfiniteMovingCards = ({
     <div
       ref={containerRef}
       className={cn(
-        "scroller relative z-20 max-w-7xl overflow-hidden [mask-image:linear-gradient(to_right,transparent,white_20%,white_80%,transparent)]",
+        "scroller relative z-20 max-w-7xl overflow-hidden mask-[linear-gradient(to_right,transparent,white_20%,white_80%,transparent)]",
         className,
       )}
     >
@@ -83,22 +86,34 @@ export const InfiniteMovingCards = ({
         className={cn(
           "flex w-max min-w-full shrink-0 flex-nowrap gap-4 py-4",
           start && "animate-scroll",
-          pauseOnHover && "hover:[animation-play-state:paused]",
+          pauseOnHover && "hover:paused",
         )}
       >
-        {items.map((item) => (
+        {items.map((item, index) => (
           <li
-            className="relative w-[350px] max-w-full shrink-0 rounded-2xl border border-b-0 px-8 py-6 md:w-[450px] border-zinc-700 bg-[linear-gradient(180deg,#27272a,#18181b)]"
-            key={item.name}
+            className="relative w-87.5 max-w-full shrink-0 rounded-2xl border border-b-0 px-8 py-6 md:w-112.5 border-zinc-700 bg-[linear-gradient(180deg,#27272a,#18181b)]"
+            key={`${item.name}-${item.title}-${index}`}
           >
             <blockquote>
               <div
                 aria-hidden="true"
-                className="user-select-none pointer-events-none absolute -top-0.5 -left-0.5 -z-1 h-[calc(100%_+_4px)] w-[calc(100%_+_4px)]"
+                className="user-select-none pointer-events-none absolute -top-0.5 -left-0.5 -z-1 h-[calc(100%+4px)] w-[calc(100%+4px)]"
               ></div>
-              <span className="relative z-20 text-sm leading-[1.6] font-normal text-gray-100">
-                {item.quote}
-              </span>
+              {item.imageSrc ? (
+                <div className="relative z-20 overflow-hidden rounded-xl border border-zinc-700/80">
+                  <Image
+                    src={item.imageSrc}
+                    alt={item.imageAlt || item.name}
+                    width={900}
+                    height={540}
+                    className="h-52 w-full object-cover md:h-56"
+                  />
+                </div>
+              ) : (
+                <span className="relative z-20 text-sm leading-[1.6] font-normal text-gray-100">
+                  {item.quote}
+                </span>
+              )}
               <div className="relative z-20 mt-6 flex flex-row items-center">
                 <span className="flex flex-col gap-1">
                   <span className="text-sm leading-[1.6] font-normal text-gray-400">
