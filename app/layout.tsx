@@ -37,7 +37,7 @@ export default function RootLayout({
         <header className="site-header relative w-full z-50">
           <NavbarDemo />
         </header>
-        <main id="content" className="site-content">
+        <main role="main" className="site-content">
           {children}
         </main>
         <Analytics />

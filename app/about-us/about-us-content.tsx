@@ -120,7 +120,7 @@ export default function AboutUsPage() {
 						words={missionHeaderWords}
 						className="mb-5 inline-block w-fit bg-linear-to-r from-[#b2c4ff] to-white bg-clip-text text-left text-3xl font-bold leading-[1.15] pb-2 lg:text-5xl"
 					/>
-					<p className={`${ibmPlexMono.className} max-w-4xl text-sm leading-7 text-zinc-300 lg:text-base`}>
+					<p className={`${ibmPlexMono.className} max-w-5xl text-sm leading-7 text-zinc-300 lg:text-base`}>
 						Like many robotics clubs, Milpitas Xtreme Robotics aims to give students hands-on
 						experiences in engineering, programming, finance, and leadership, as well as
 						opportunities in STEM programs. However, we also aim to make an open space where
@@ -133,17 +133,9 @@ export default function AboutUsPage() {
 						words={storyHeaderWords}
 						className="mb-5 inline-block w-fit bg-linear-to-r from-[#b2c4ff] to-white bg-clip-text text-left text-3xl font-bold leading-[1.15] pb-2 lg:text-5xl"
 					/>
-					<p className={`${ibmPlexMono.className} max-w-4xl text-sm leading-7 text-zinc-300 lg:text-base`}>
+					<p className={`${ibmPlexMono.className} max-w-5xl text-sm leading-7 text-zinc-300 lg:text-base`}>
 						In a nutshell, Milpitas Xtreme Robotics is the official robotics club of{" "}
-						<LinkPreview
-							url="https://mhs.musd.org/"
-							className="font-semibold text-zinc-200 underline decoration-zinc-400 underline-offset-4 hover:text-white"
-							width={170}
-							height={105}
-						>
-							Milpitas High School
-						</LinkPreview>{" "}
-						. We provide the students of Milpitas High a chance to discover, create, or
+						<LinkPreview url="https://mhs.musd.org/" className="font-semibold text-zinc-200 underline decoration-zinc-400 underline-offset-4 hover:text-white" previewClassName="scale-110" width={170} height={105}>Milpitas High School.</LinkPreview> We provide the students of Milpitas High a chance to discover, create, or
 						nurture a passion for what the Silicon Valley is famed for - technology. MXR offer
 						our members a chance to use the skills they learn in their classrooms on something
 						more tangible. However, we also highly promote certain key concepts in our club;

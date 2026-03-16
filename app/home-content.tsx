@@ -428,22 +428,22 @@ export default function Home() {
                 <div>
                   <ul className={`${ibmPlexMono.className} flex flex-nowrap items-center gap-5 overflow-x-auto whitespace-nowrap pb-1 text-sm font-medium text-[#D4D4D8]`}>
                     <li className="shrink-0">
-                      <LinkPreview url="/about-us" className="text-[#D4D4D8] hover:text-[#E4E4E7]" width={160} height={100} isStatic imageSrc="/Images/ClubPicture.png">About</LinkPreview>
+                      <LinkPreview url="/about-us" className="text-[#D4D4D8] hover:text-[#E4E4E7]" width={170} height={105} isStatic imageSrc="/Images/ClubPicture.png">About</LinkPreview>
                     </li>
                     <li className="shrink-0">
-                      <LinkPreview url="/#vex" className="text-[#D4D4D8] hover:text-[#E4E4E7]" width={160} height={100} isStatic imageSrc="/Images/vex.png">VEX</LinkPreview>
+                      <LinkPreview url="/#vex" className="text-[#D4D4D8] hover:text-[#E4E4E7]" width={170} height={105} isStatic imageSrc="/Images/vex.png" previewClassName="scale-125">VEX</LinkPreview>
                     </li>
                     <li className="shrink-0">
-                      <LinkPreview url="/#ftc" className="text-[#D4D4D8] hover:text-[#E4E4E7]" width={160} height={100} isStatic imageSrc="/Images/FTC.jpg">FTC</LinkPreview>
+                      <LinkPreview url="/#ftc" className="text-[#D4D4D8] hover:text-[#E4E4E7]" width={170} height={105} isStatic imageSrc="/Images/FTC.jpg">FTC</LinkPreview>
                     </li>
                     <li className="shrink-0">
-                      <LinkPreview url="/#outreach" className="text-[#D4D4D8] hover:text-[#E4E4E7]" width={160} height={100} isStatic imageSrc="/logo.png">Outreach</LinkPreview>
+                      <LinkPreview url="/#outreach" className="text-[#D4D4D8] hover:text-[#E4E4E7]" width={170} height={105} isStatic imageSrc="/logo.png">Outreach</LinkPreview>
                     </li>
                     <li className="shrink-0">
-                      <LinkPreview url="/sponsors" className="text-[#D4D4D8] hover:text-[#E4E4E7]" width={160} height={100} isStatic imageSrc="/team.png">Sponsors</LinkPreview>
+                      <LinkPreview url="/sponsors" className="text-[#D4D4D8] hover:text-[#E4E4E7]" width={170} height={105} isStatic imageSrc="/team.png">Sponsors</LinkPreview>
                     </li>
                     <li className="shrink-0">
-                      <LinkPreview url="/#blog" className="text-[#D4D4D8] hover:text-[#E4E4E7]" width={160} height={100} isStatic imageSrc="/logo.png">Blog</LinkPreview>
+                      <LinkPreview url="/#blog" className="text-[#D4D4D8] hover:text-[#E4E4E7]" width={170} height={105} isStatic imageSrc="/logo.png">Blog</LinkPreview>
                     </li>
                   </ul>
                 </div>
