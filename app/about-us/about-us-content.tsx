@@ -55,7 +55,7 @@ const photoImages = Array.from({ length: 24 }, () => "/logo.png");
 
 export default function AboutUsPage() {
 	return (
-		<main className="-mt-20 w-full bg-[#0A0A0A]">
+		<div className="-mt-20 w-full bg-[#0A0A0A]">
 			<section className="relative h-screen w-full overflow-hidden -mb-px">
 				<div
 					aria-hidden
@@ -279,7 +279,7 @@ export default function AboutUsPage() {
 					</div>
 				</div>
 			</footer>
-		</main>
+		</div>
 	);
 }
 

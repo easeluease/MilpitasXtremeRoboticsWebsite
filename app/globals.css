@@ -190,11 +190,11 @@
   }
 }
 
-#header {
+.site-header {
   @apply fixed w-full top-0 z-50;
 }
 
-#content {
+.site-content {
   @apply pt-20;
 }
 

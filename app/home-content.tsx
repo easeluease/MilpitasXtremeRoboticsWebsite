@@ -115,7 +115,7 @@ export default function Home() {
   };
 
   return (
-    <main className="flex min-h-screen flex-col items-center">
+    <div className="flex min-h-screen flex-col items-center">
       {/* SECTION 1: The Sticky Hero */}
       <div className="sticky top-20 z-0 h-screen w-full overflow-hidden">
         <div className="hero-sticky w-full overflow-hidden">
@@ -473,6 +473,6 @@ export default function Home() {
           </footer>
         </div>
       </div>
-    </main>
+    </div>
   );
 }
