@@ -25,29 +25,29 @@ const ibmPlexMono = IBM_Plex_Mono({
 const missionHeaderWords = [
 	{
 		text: "Our",
-		className: "text-transparent",
+		className: "supports-[background-clip:text]:text-transparent",
 	},
 	{
 		text: "Mission",
-		className: "text-transparent",
+		className: "supports-[background-clip:text]:text-transparent",
 	},
 ];
 
 const storyHeaderWords = [
 	{
 		text: "Our",
-		className: "text-transparent",
+		className: "supports-[background-clip:text]:text-transparent",
 	},
 	{
 		text: "Story",
-		className: "text-transparent",
+		className: "supports-[background-clip:text]:text-transparent",
 	},
 ];
 
 const photosHeaderWords = [
 	{
 		text: "Photos",
-		className: "text-transparent",
+		className: "supports-[background-clip:text]:text-transparent",
 	},
 ];
 
@@ -197,12 +197,12 @@ export default function AboutUsPage() {
 									</Link>
 								</li>
 								<li className="shrink-0">
-									<Link href="/programs/vex" className="hover:text-[#E4E4E7]">
+									<Link href="/vex" className="hover:text-[#E4E4E7]">
 										VEX
 									</Link>
 								</li>
 								<li className="shrink-0">
-									<Link href="/programs/ftc" className="hover:text-[#E4E4E7]">
+									<Link href="/ftc" className="hover:text-[#E4E4E7]">
 										FTC
 									</Link>
 								</li>
@@ -227,7 +227,7 @@ export default function AboutUsPage() {
 					<hr className="my-4 border-zinc-700/80 sm:mx-auto lg:my-5" />
 					<div className="sm:flex sm:items-center sm:justify-between">
 						<span className={`${ibmPlexMono.className} text-sm text-[#A1A1AA] sm:text-center`}>
-							(c) 2026 Milpitas Xtreme Robotics. All Rights Reserved.
+							© 2026 Milpitas Xtreme Robotics
 						</span>
 						<div className="mt-2 flex sm:mt-0 sm:justify-center">
 							<a

@@ -40,52 +40,52 @@ const typeWriterWords = [
 const programsTypewriterWords = [
   {
     text: "Programs",
-    className: "text-transparent",
+    className: "supports-[background-clip:text]:text-transparent",
   }
 ];
 
 const vexTypewriterWords = [
   {
     text: "VEX",
-    className: "text-transparent",
+    className: "supports-[background-clip:text]:text-transparent",
   },
   {
     text: "Robotics",
-    className: "text-transparent",
+    className: "supports-[background-clip:text]:text-transparent",
   },
   {
     text: "Compitition",
-    className: "text-transparent",
+    className: "supports-[background-clip:text]:text-transparent",
   },
 ];
 
 const ftcTypewriterWords = [
   {
     text: "First",
-    className: "text-transparent",
+    className: "supports-[background-clip:text]:text-transparent",
   },
   {
     text: "Tech",
-    className: "text-transparent",
+    className: "supports-[background-clip:text]:text-transparent",
   },
   {
     text: "Competition",
-    className: "text-transparent",
+    className: "supports-[background-clip:text]:text-transparent",
   },
 ];
 
 const outreachTypewriterWords = [
   {
     text: "Outreach",
-    className: "text-transparent",
+    className: "supports-[background-clip:text]:text-transparent",
   },
   {
     text: "&",
-    className: "text-transparent",
+    className: "supports-[background-clip:text]:text-transparent",
   },
   {
     text: "Events",
-    className: "text-transparent",
+    className: "supports-[background-clip:text]:text-transparent",
   },
 ];
 
@@ -217,13 +217,13 @@ export default function Home() {
             {/* Program 1 - Number/Text Left, Image Right */}
             <div
               id="vex"
-              className="grid grid-cols-1 lg:grid-cols-[1.25fr_0.75fr] gap-2 w-full items-start"
+              className="grid grid-cols-1 md:grid-cols-[1.25fr_0.75fr] gap-2 w-full items-start"
             >
               <div className="flex flex-col justify-start space-y-6 pt-0">
                 <div className="text-9xl font-bold text-[#A1A1AA] -mb-8 leading-none">01</div>
                 <div>
                   <TypewriterEffect words={vexTypewriterWords} className="justify-start whitespace-nowrap bg-linear-to-r from-[#b2c4ff] to-white bg-clip-text text-3xl lg:text-4xl font-bold mb-6 text-left" />
-                  <div className={`${ibmPlexMono.className} text-[#666666] leading-relaxed text-base`}>
+                  <div className={`${ibmPlexMono.className} text-[#A1A1AA] leading-relaxed text-base`}>
                     <LinkPreview
                       url="https://www.vexrobotics.com/competition?srsltid=AfmBOorWHCQCMcI5b7pOVo5EMUoZbvNnlHV8y-QmunTlb2qpb8Ux5mif"
                       className="text-[#E4E4E7] underline decoration-[#A1A1AA] underline-offset-4"
@@ -255,7 +255,7 @@ export default function Home() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.8, delay: 0 }}
                 viewport={{ once: true }}
-                className="flex justify-center lg:justify-end pt-28"
+                className="flex justify-center md:justify-end pt-28"
               >
                 <CometCard rotateDepth={24} translateDepth={24} className="rounded-full overflow-visible">
                   <div className="relative flex h-64 w-64 items-center justify-center rounded-full overflow-hidden bg-[#111111] ring-1 ring-[#b2c4ff]/30 shadow-[0_0_36px_rgba(178,196,255,0.24)]">
@@ -274,13 +274,13 @@ export default function Home() {
             {/* Program 2 - Image Left, Text Right */}
             <div
               id="ftc"
-              className="grid grid-cols-1 lg:grid-cols-2 gap-2 w-full items-start"
+              className="grid grid-cols-1 md:grid-cols-2 gap-2 w-full items-start"
             >
               <div className="order-2 flex flex-col justify-start space-y-6 pt-0 z-10">
                 <div className="text-9xl font-bold text-[#A1A1AA] -mb-8 leading-none">02</div>
                 <div>
                   <TypewriterEffect words={ftcTypewriterWords} className="justify-start bg-linear-to-r from-[#b2c4ff] to-white bg-clip-text text-3xl lg:text-4xl font-bold mb-6" />
-                  <div className={`${ibmPlexMono.className} text-[#666666] leading-relaxed text-base`}>
+                  <div className={`${ibmPlexMono.className} text-[#A1A1AA] leading-relaxed text-base`}>
                     <LinkPreview
                       url="https://www.firstinspires.org/programs/ftc/"
                       className="text-[#E4E4E7] underline decoration-[#A1A1AA] underline-offset-4"
@@ -312,7 +312,7 @@ export default function Home() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.8, delay: 0 }}
                 viewport={{ once: true }}
-                className="order-1 flex justify-center lg:justify-start pt-28"
+                className="order-1 flex justify-center md:justify-start pt-28"
               >
                 <CometCard rotateDepth={24} translateDepth={24} className="rounded-full overflow-visible">
                   <div className="relative flex h-64 w-64 items-center justify-center rounded-full overflow-hidden bg-[#111111] ring-1 ring-[#b2c4ff]/30 shadow-[0_0_36px_rgba(178,196,255,0.24)]">
@@ -331,13 +331,13 @@ export default function Home() {
             {/* Program 3 - Number/Text Left, Image Right */}
             <div
               id="outreach"
-              className="grid grid-cols-1 lg:grid-cols-2 gap-2 w-full items-start"
+              className="grid grid-cols-1 md:grid-cols-2 gap-2 w-full items-start"
             >
               <div className="flex flex-col justify-start space-y-6 pt-0">
                 <div className="text-9xl font-bold text-[#A1A1AA] -mb-8 leading-none">03</div>
                 <div>
                   <TypewriterEffect words={outreachTypewriterWords} className="justify-start w-full bg-linear-to-r from-[#b2c4ff] to-white bg-clip-text text-left text-3xl lg:text-4xl font-bold mb-6" />
-                  <p className={`${ibmPlexMono.className} text-[#666666] leading-relaxed text-base`}>
+                  <p className={`${ibmPlexMono.className} text-[#A1A1AA] leading-relaxed text-base`}>
                     Placeholder
                   </p>
                 </div>
@@ -347,7 +347,7 @@ export default function Home() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.8, delay: 0 }}
                 viewport={{ once: true }}
-                className="flex justify-center lg:justify-end pt-28"
+                className="flex justify-center md:justify-end pt-28"
               >
                 <CometCard rotateDepth={24} translateDepth={24} className="rounded-full overflow-visible">
                   <div className="relative flex h-64 w-64 items-center justify-center rounded-full overflow-hidden bg-[#111111] ring-1 ring-[#b2c4ff]/30 shadow-[0_0_36px_rgba(178,196,255,0.24)]">
@@ -450,7 +450,7 @@ export default function Home() {
               </div>
               <hr className="my-4 border-zinc-700/80 sm:mx-auto lg:my-5" />
               <div className="sm:flex sm:items-center sm:justify-between">
-                <span className={`${ibmPlexMono.className} text-sm text-[#A1A1AA] sm:text-center`}>┬⌐ 2026 Milpitas Xtreme Robotics. All Rights Reserved.</span>
+                <span className={`${ibmPlexMono.className} text-sm text-[#A1A1AA] sm:text-center`}>© 2026 Milpitas Xtreme Robotics</span>
                 <div className="mt-2 flex sm:mt-0 sm:justify-center">
                   <a href="https://www.instagram.com/milpitasxrobotics/" target="_blank" rel="noopener noreferrer" className="text-[#9CA3AF] hover:text-[#E4E4E7] ms-4" aria-label="Instagram">
                     <InstagramLogoIcon className="h-4 w-4" />

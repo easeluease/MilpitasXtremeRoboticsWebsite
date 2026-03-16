@@ -33,19 +33,19 @@ export function NavbarDemo() {
     },
     {
       name: "VEX",
-      link: "/programs/vex",
+      link: "/vex",
       children: [
-        { name: "TEAM 1669X", link: "/programs/vex/1669x" },
-        { name: "TEAM 1669Y", link: "/programs/vex/1669y" },
+        { name: "TEAM 1669X", link: "/vex/1669x" },
+        { name: "TEAM 1669Y", link: "/vex/1669y" },
       ],
     },
-    { name: "FTC", link: "/programs/ftc" },
+    { name: "FTC", link: "/ftc" },
     {
       name: "Outreach",
       link: "/outreach",
       children: [
-        { name: "MARS", link: "/outreach/mars" },
-        { name: "LEGO ROBOTICS", link: "/outreach/lego-robotics" },
+        { name: "MARS", link: "/mars" },
+        { name: "LEGO ROBOTICS", link: "/lego-robotics" },
       ],
     },
     { name: "Sponsors", link: "/sponsors" },
@@ -66,13 +66,13 @@ export function NavbarDemo() {
     { name: "About", link: "/about-us" },
     { name: "About - Officers", link: "/about-us/officers" },
     { name: "About - Achievements", link: "/about-us/achievements" },
-    { name: "VEX", link: "/programs/vex" },
-    { name: "VEX - TEAM 1669X", link: "/programs/vex/1669x" },
-    { name: "VEX - TEAM 1669Y", link: "/programs/vex/1669y" },
-    { name: "FTC", link: "/programs/ftc" },
+    { name: "VEX", link: "/vex" },
+    { name: "VEX - TEAM 1669X", link: "/vex/1669x" },
+    { name: "VEX - TEAM 1669Y", link: "/vex/1669y" },
+    { name: "FTC", link: "/ftc" },
     { name: "Outreach", link: "/outreach" },
-    { name: "Outreach - MARS", link: "/outreach/mars" },
-    { name: "Outreach - LEGO ROBOTICS", link: "/outreach/lego-robotics" },
+    { name: "Outreach - MARS", link: "/mars" },
+    { name: "Outreach - LEGO ROBOTICS", link: "/lego-robotics" },
     { name: "Sponsors", link: "/sponsors" },
     { name: "Blog", link: "/blog" },
     { name: "More - Contact", link: "/contact" },
@@ -145,8 +145,8 @@ export function NavbarDemo() {
       {/* Desktop Navigation */}
       <NavBody>
         <NavbarLogo />
-        <div className="hidden flex-1 flex-row items-center justify-end text-sm font-medium lg:ml-12 lg:pl-6 lg:flex lg:space-x-2">
-          <div ref={desktopNavRef} className="relative flex items-center lg:space-x-2">
+        <div className="hidden flex-1 flex-row items-center justify-end text-sm font-medium md:ml-12 md:pl-6 md:flex md:space-x-2">
+          <div ref={desktopNavRef} className="relative flex items-center md:space-x-2">
             <motion.span
               className="pointer-events-none absolute top-0 z-0 h-full rounded-full bg-neutral-800"
               animate={{ x: bubble.x, width: bubble.width, opacity: bubble.opacity }}
