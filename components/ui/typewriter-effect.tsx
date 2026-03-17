@@ -25,7 +25,7 @@ export const TypewriterEffect = ({
           text: word.text.split(""),
         };
       }),
-    [words]
+    [words],
   );
 
   const [scope, animate] = useAnimate();
@@ -35,7 +35,10 @@ export const TypewriterEffect = ({
 
   useEffect(() => {
     if (isInView && !hasTyped) {
-      const totalChars = words.reduce((total, word) => total + word.text.length, 0);
+      const totalChars = words.reduce(
+        (total, word) => total + word.text.length,
+        0,
+      );
       const typingDurationSeconds = 0.3 + Math.max(totalChars - 1, 0) * 0.1;
 
       setShowCursor(true);
@@ -50,13 +53,16 @@ export const TypewriterEffect = ({
           duration: 0.3,
           delay: stagger(0.1),
           ease: "easeInOut",
-        }
+        },
       );
 
-      const hideCursorTimeout = window.setTimeout(() => {
-        setShowCursor(false);
-        setHasTyped(true);
-      }, (typingDurationSeconds + 0.1) * 1000);
+      const hideCursorTimeout = window.setTimeout(
+        () => {
+          setShowCursor(false);
+          setHasTyped(true);
+        },
+        (typingDurationSeconds + 0.1) * 1000,
+      );
 
       return () => {
         window.clearTimeout(hideCursorTimeout);
@@ -74,10 +80,7 @@ export const TypewriterEffect = ({
                 <motion.span
                   initial={{}}
                   key={`char-${index}`}
-                  className={cn(
-                    `text-white opacity-0 hidden`,
-                    word.className
-                  )}
+                  className={cn(`text-white opacity-0 hidden`, word.className)}
                 >
                   {char}
                 </motion.span>
@@ -91,10 +94,7 @@ export const TypewriterEffect = ({
   };
   return (
     <div
-      className={cn(
-        "text-3xl lg:text-5xl font-bold text-center",
-        className
-      )}
+      className={cn("text-3xl lg:text-5xl font-bold text-center", className)}
     >
       {renderWords()}
       <motion.span
@@ -111,8 +111,8 @@ export const TypewriterEffect = ({
         }}
         aria-hidden
         className={cn(
-          "inline-block rounded-sm w-[4px] h-4 md:h-6 lg:h-10 bg-blue-500 align-middle",
-          cursorClassName
+          "inline-block rounded-sm w-1 h-4 md:h-6 lg:h-10 bg-blue-500 align-middle",
+          cursorClassName,
         )}
       ></motion.span>
     </div>
@@ -216,8 +216,8 @@ export const TypewriterEffectSmooth = ({
             repeatType: "reverse",
           }}
           className={cn(
-            "block rounded-sm w-[4px] h-4 sm:h-6 xl:h-12 bg-blue-500",
-            cursorClassName
+            "block rounded-sm w-1 h-4 sm:h-6 xl:h-12 bg-blue-500",
+            cursorClassName,
           )}
         ></motion.span>
       ) : null}

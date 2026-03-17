@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { JSX, useState } from "react";
 import {
   motion,
   AnimatePresence,
@@ -58,7 +58,7 @@ export const FloatingNav = ({
           duration: 0.2,
         }}
         className={cn(
-          "flex max-w-fit fixed top-10 inset-x-0 mx-auto z-[5000] items-center justify-center",
+          "flex max-w-fit fixed top-10 inset-x-0 mx-auto z-5000 items-center justify-center",
           className
         )}
       >
@@ -88,7 +88,7 @@ export const FloatingNav = ({
                 )}
 
                 {navItem.children && navItem.children.length > 0 && (
-                  <div className="absolute left-1/2 top-full z-[6000] mt-2 hidden min-w-[180px] -translate-x-1/2 rounded-md border border-neutral-800 bg-neutral-950 p-2 group-hover:block">
+                  <div className="absolute left-1/2 top-full z-6000 mt-2 hidden min-w-45 -translate-x-1/2 rounded-md border border-neutral-800 bg-neutral-950 p-2 group-hover:block">
                     {navItem.children.map((child, childIdx) => (
                       <a
                         key={`child-${idx}-${childIdx}`}

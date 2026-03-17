@@ -169,9 +169,9 @@ export default function AboutUsPage() {
 							<Link href="/" className="flex items-center">
 								<Image
 									src="/logo.png"
-									className="me-3 h-8 w-auto object-contain"
-									width={1941}
-									height={1564}
+									className="me-3 h-auto w-auto object-contain"
+									width={41}
+									height={33}
 									alt="MXR Logo"
 								/>
 								<span className="self-center whitespace-nowrap text-xl font-semibold text-[#E4E4E7]">
@@ -189,17 +189,17 @@ export default function AboutUsPage() {
 									</Link>
 								</li>
 								<li className="shrink-0">
-									<Link href="/vex" className="hover:text-[#E4E4E7]">
+									<Link href="/#vex" className="hover:text-[#E4E4E7]">
 										VEX
 									</Link>
 								</li>
 								<li className="shrink-0">
-									<Link href="/ftc" className="hover:text-[#E4E4E7]">
+									<Link href="/#ftc" className="hover:text-[#E4E4E7]">
 										FTC
 									</Link>
 								</li>
 								<li className="shrink-0">
-									<Link href="/outreach" className="hover:text-[#E4E4E7]">
+									<Link href="/#outreach" className="hover:text-[#E4E4E7]">
 										Outreach
 									</Link>
 								</li>
