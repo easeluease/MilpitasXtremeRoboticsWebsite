@@ -21,35 +21,19 @@ export function BackgroundGradient({
     <div className={cn("group relative p-px", containerClassName)}>
       <div
         className={cn(
-          "pointer-events-none absolute -inset-2 rounded-[calc(inherit+8px)] opacity-70 blur-xl",
-          "bg-linear-to-r from-[#b2c4ff]/65 via-white/35 to-[#b2c4ff]/65",
-          animate && "animate-pulse"
+          "pointer-events-none absolute -inset-1 rounded-[calc(inherit+4px)] blur-md",
+          "bg-linear-to-r from-[#b2c4ff]/27 via-white/15 to-[#b2c4ff]/27",
+          animate ? "opacity-45" : "opacity-33"
         )}
       />
       <div
         className={cn(
-          "pointer-events-none absolute inset-0 rounded-[inherit] bg-linear-to-r from-[#b2c4ff] to-white",
-          animate && "opacity-100"
-        )}
-      />
-      <div
-        className={cn(
-          "pointer-events-none absolute inset-0 rounded-[inherit] opacity-45",
-          "bg-linear-to-r from-white/10 via-white/0 to-white/10",
-          animate && "[background-size:200%_100%] [animation:shimmer_4.5s_linear_infinite]"
+          "pointer-events-none absolute inset-0 rounded-[inherit]",
+          "bg-linear-to-r from-[#b2c4ff] to-white",
+          animate ? "opacity-54" : "opacity-45"
         )}
       />
       <div className={cn("relative rounded-[inherit]", className)}>{children}</div>
-      <style>{`
-        @keyframes shimmer {
-          0% {
-            background-position: 200% 0;
-          }
-          100% {
-            background-position: -200% 0;
-          }
-        }
-      `}</style>
     </div>
   );
 }

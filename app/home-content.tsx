@@ -152,10 +152,8 @@ export default function Home() {
                     <Image
                       src="/scroll-down.svg"
                       alt="Scroll Down"
-                      width={200}
-                      height={60}
-                      className="h-auto w-auto"
-                      style={{ display: "block" }}
+                      width={150}
+                      height={27}
                     />
                   </button>
                   <style>{`
