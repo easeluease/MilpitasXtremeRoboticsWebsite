@@ -81,7 +81,7 @@ export const NavBody = ({ children, className, visible }: NavBodyProps) => {
   return (
     <motion.div
       animate={{
-        width: visible ? "88%" : "100%",
+        width: visible ? "96%" : "100%",
         y: visible ? 20 : 0,
         backgroundColor: visible ? "rgba(10,10,10,0.82)" : "rgba(10,10,10,0)",
         borderColor: visible ? "rgba(113,113,122,0.55)" : "rgba(113,113,122,0)",
@@ -92,11 +92,10 @@ export const NavBody = ({ children, className, visible }: NavBodyProps) => {
         damping: 35,
       }}
       style={{
-        minWidth: "800px",
         willChange: "transform",
       }}
       className={cn(
-        "relative z-[60] mx-auto hidden w-full max-w-7xl flex-row items-center justify-between self-start rounded-full border bg-transparent px-4 py-2 md:flex",
+        "relative z-60 mx-auto hidden w-full max-w-440 flex-row items-center justify-between self-start rounded-full border bg-transparent px-8 py-4 md:flex",
         visible && "shadow-[0_0_30px_rgba(178,196,255,0.28)]",
         className,
       )}
@@ -143,8 +142,8 @@ export const MobileNav = ({ children, className, visible }: MobileNavProps) => {
     <motion.div
       animate={{
         width: visible ? "90%" : "100%",
-        paddingRight: visible ? "12px" : "0px",
-        paddingLeft: visible ? "12px" : "0px",
+        paddingRight: visible ? "20px" : "0px",
+        paddingLeft: visible ? "20px" : "0px",
         borderRadius: visible ? "4px" : "2rem",
         y: visible ? 20 : 0,
         backgroundColor: visible ? "rgba(10,10,10,0.82)" : "rgba(10,10,10,0)",
@@ -156,7 +155,7 @@ export const MobileNav = ({ children, className, visible }: MobileNavProps) => {
         damping: 35,
       }}
       className={cn(
-        "relative z-50 mx-auto flex w-full max-w-[calc(100vw-2rem)] flex-col items-center justify-between border bg-transparent px-0 py-2 md:hidden",
+        "relative z-50 mx-auto flex w-full max-w-[calc(100vw-1rem)] flex-col items-center justify-between border bg-transparent px-0 py-4 md:hidden",
         visible && "shadow-[0_0_24px_rgba(178,196,255,0.25)]",
         className,
       )}
@@ -195,8 +194,13 @@ export const MobileNavMenu = ({
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
+          onClick={(event) => {
+            if (event.target === event.currentTarget) {
+              onClose();
+            }
+          }}
           className={cn(
-            "absolute inset-x-0 top-16 z-50 flex w-full flex-col items-start justify-start gap-4 rounded-lg px-4 py-8 shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset] bg-neutral-950",
+            "absolute inset-x-0 top-20 z-50 flex w-full flex-col items-start justify-start gap-6 rounded-lg px-6 py-10 text-lg shadow-[0_0_24px_rgba(34,42,53,0.06),0_1px_1px_rgba(0,0,0,0.05),0_0_0_1px_rgba(34,42,53,0.04),0_0_4px_rgba(34,42,53,0.08),0_16px_68px_rgba(47,48,55,0.05),0_1px_0_rgba(255,255,255,0.1)_inset] bg-neutral-950",
             className,
           )}
         >
@@ -215,9 +219,9 @@ export const MobileNavToggle = ({
   onClick: () => void;
 }) => {
   return isOpen ? (
-    <XIcon className="cursor-pointer" onClick={onClick} />
+    <XIcon size={30} className="cursor-pointer" onClick={onClick} />
   ) : (
-    <MenuIcon className="cursor-pointer" onClick={onClick} />
+    <MenuIcon size={30} className="cursor-pointer" onClick={onClick} />
   );
 };
 
@@ -225,16 +229,18 @@ export const NavbarLogo = () => {
   return (
     <Link
       href="#"
-      className="relative z-40 mr-4 flex shrink-0 items-center space-x-2 px-2 py-1 text-sm font-normal text-black"
+      className="relative z-40 mr-2 flex max-w-[78vw] shrink-0 items-center space-x-3 px-2 py-1 text-sm font-normal text-black sm:mr-4 sm:max-w-none lg:space-x-4"
     >
       <Image
         src="/logo.png"
         alt="logo"
-        width={30}
-        height={30}
-        className="h-auto w-auto"
+        width={52}
+        height={52}
+        className="h-auto w-10 object-contain sm:w-11 lg:w-13"
       />
-      <span className="whitespace-nowrap font-medium text-white">Milpitas Xtreme Robotics</span>
+      <span className="truncate text-sm font-medium text-white sm:text-base lg:text-lg md:whitespace-nowrap">
+        Milpitas Xtreme Robotics
+      </span>
     </Link>
   );
 };
@@ -268,7 +274,7 @@ export const NavbarButton = ({
       <a
         href={href}
         className={cn(baseStyles, variantStyles[variant], className)}
-        {...(props as React.AnchorHTMLAttributes<HTMLAnchorElement>)}
+        {...(props as unknown as React.AnchorHTMLAttributes<HTMLAnchorElement>)}
       >
         {children}
       </a>

@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { IBM_Plex_Mono } from "next/font/google";
 import { motion, AnimatePresence } from "framer-motion";
-import { useState, useId, useRef, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 
 import { BackgroundGradient } from "@/components/ui/background-gradient";
 import { TypewriterEffect } from "@/components/ui/typewriter-effect";
@@ -131,7 +131,6 @@ const programLeadsData: OfficerCard[] = [
 export default function AboutUsPage() {
 	const [active, setActive] = useState<OfficerCard | null>(null);
 	const [selectedYear, setSelectedYear] = useState<"2025-2026" | "2024-2025" | "2023-2024">("2025-2026");
-	const id = useId();
 	const ref = useRef<HTMLDivElement>(null);
 	const filteredCoreFour = coreFourData.filter((officer) => officer.year === selectedYear);
 	const filteredProgramLeads = programLeadsData.filter((officer) => officer.year === selectedYear);
@@ -164,7 +163,7 @@ export default function AboutUsPage() {
 				></div>
 				<div aria-hidden className="absolute inset-0 bg-black/55"></div>
 
-				<div className="absolute bottom-8 left-6 z-10 lg:bottom-14 lg:left-14">
+				<div className="absolute bottom-8 left-4 z-10 sm:left-6 lg:bottom-14 lg:left-14">
 					<motion.div
 						initial={{ opacity: 0, y: 80 }}
 						whileInView={{ opacity: 1, y: 0 }}
@@ -197,18 +196,18 @@ export default function AboutUsPage() {
 						animate={{ opacity: 1 }}
 						exit={{ opacity: 0 }}
 						transition={{ duration: 0.22, ease: "easeOut" }}
-						className="fixed inset-0 z-50 grid place-items-center p-4"
+						className="fixed inset-0 z-50 grid place-items-center p-3 sm:p-4"
 					>
-						<BackgroundGradient containerClassName="w-full max-w-3xl rounded-3xl">
+							<BackgroundGradient containerClassName="w-full max-w-3xl rounded-3xl">
 							<motion.div
 								ref={ref}
 								initial={{ opacity: 0, scale: 0.96, y: 10 }}
 								animate={{ opacity: 1, scale: 1, y: 0 }}
 								exit={{ opacity: 0, scale: 0.98, y: 6 }}
 								transition={{ duration: 0.24, ease: "easeOut" }}
-								className="flex h-fit w-full flex-col overflow-hidden rounded-3xl bg-zinc-950/95 md:flex-row"
+								className="flex h-fit max-h-[85vh] w-full flex-col overflow-y-auto rounded-3xl bg-zinc-950/95 md:max-h-[unset] md:overflow-visible md:flex-row"
 							>
-								<motion.div className="relative h-64 shrink-0 md:h-auto md:w-72 md:min-h-[320px]">
+								<motion.div className="relative h-56 shrink-0 sm:h-64 md:h-auto md:w-72 md:min-h-80">
 									<Image
 										src="/logo.png"
 										alt={active.name}
@@ -218,12 +217,12 @@ export default function AboutUsPage() {
 									/>
 								</motion.div>
 
-								<div className={`${ibmPlexMono.className} flex-1 border-t border-zinc-800/70 p-6 md:border-l md:border-t-0`}>
+								<div className={`${ibmPlexMono.className} flex-1 border-t border-zinc-800/70 p-4 sm:p-6 md:border-l md:border-t-0`}>
 									<motion.h3
 										initial={{ opacity: 0, y: 6 }}
 										animate={{ opacity: 1, y: 0 }}
 										transition={{ duration: 0.2, delay: 0.08, ease: "easeOut" }}
-										className="text-3xl font-semibold tracking-tight text-zinc-100"
+										className="text-2xl font-semibold tracking-tight text-zinc-100 sm:text-3xl"
 									>
 										{active.name}
 									</motion.h3>
@@ -231,7 +230,7 @@ export default function AboutUsPage() {
 										initial={{ opacity: 0, y: 6 }}
 										animate={{ opacity: 1, y: 0 }}
 										transition={{ duration: 0.2, delay: 0.12, ease: "easeOut" }}
-										className="mt-1 text-xl text-zinc-300"
+										className="mt-1 text-lg text-zinc-300 sm:text-xl"
 									>
 										{active.title}
 									</motion.p>
@@ -270,12 +269,12 @@ export default function AboutUsPage() {
 				) : null}
 			</AnimatePresence>
 
-			<section className="w-full px-6 py-10 lg:px-10 lg:py-12">
-				<div className="mx-auto w-full max-w-5xl px-2 py-2 lg:px-4 lg:py-4">
+			<section className="w-full px-4 py-10 sm:px-6 lg:px-10 lg:py-12">
+				<div className="mx-auto w-full max-w-5xl px-1 py-2 sm:px-2 lg:px-4 lg:py-4">
 					<div className="mb-5 flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
 						<TypewriterEffect
 							words={coreHeaderWords}
-							className="inline-block w-fit bg-linear-to-r from-[#b2c4ff] to-white bg-clip-text text-left text-3xl font-bold leading-[1.15] pb-2 lg:text-5xl"
+							className="inline-block w-fit bg-linear-to-r from-[#b2c4ff] to-white bg-clip-text pb-2 text-left text-2xl font-bold leading-[1.15] sm:text-3xl lg:text-5xl"
 						/>
 						<div className={`${ibmPlexMono.className} sm:pt-1`}>
 							<div className="relative inline-block">
@@ -307,7 +306,7 @@ export default function AboutUsPage() {
 						<BackgroundGradient key={officer.title} containerClassName="self-start rounded-2xl">
 							<motion.div
 								onClick={() => setActive(officer)}
-								className={`${ibmPlexMono.className} flex h-72 w-52 flex-col items-center rounded-2xl bg-zinc-950 p-3 cursor-pointer hover:opacity-90 transition-opacity`}
+								className={`${ibmPlexMono.className} flex h-72 w-full max-w-56 flex-col items-center rounded-2xl bg-zinc-950 p-3 cursor-pointer transition-opacity hover:opacity-90`}
 							>
 								<motion.div>
 									<Image
@@ -323,14 +322,12 @@ export default function AboutUsPage() {
 								>
 									{officer.name}
 								</motion.h3>
-								<motion.p
-									className="mt-1 text-center text-sm text-zinc-400 whitespace-nowrap"
-								>
+								<motion.p className="mt-1 text-center text-sm text-zinc-400">
 									{officer.title}
 								</motion.p>
 								<a
 									href={`mailto:${officer.email}`}
-									className="mt-1 block w-full break-words px-1 text-center text-[10px] leading-4 text-zinc-500 underline decoration-zinc-700 underline-offset-2 hover:text-zinc-300"
+									className="mt-1 block w-full break-all px-1 text-center text-[10px] leading-4 text-zinc-500 underline decoration-zinc-700 underline-offset-2 hover:text-zinc-300"
 								>
 									{officer.email}
 								</a>
@@ -355,7 +352,7 @@ export default function AboutUsPage() {
 								>
 									<motion.div
 										onClick={() => setActive(officer)}
-										className={`${ibmPlexMono.className} flex h-72 w-52 flex-col items-center rounded-2xl bg-zinc-950 p-3 cursor-pointer hover:opacity-90 transition-opacity`}
+										className={`${ibmPlexMono.className} flex h-72 w-full max-w-56 flex-col items-center rounded-2xl bg-zinc-950 p-3 cursor-pointer transition-opacity hover:opacity-90`}
 									>
 										<motion.div>
 											<Image
@@ -369,12 +366,12 @@ export default function AboutUsPage() {
 										<motion.h3 className="text-center text-lg font-semibold text-zinc-100">
 											{officer.name}
 										</motion.h3>
-										<motion.p className="mt-1 text-center text-sm text-zinc-400 whitespace-nowrap">
+										<motion.p className="mt-1 text-center text-sm text-zinc-400">
 											{officer.title}
 										</motion.p>
 										<a
 											href={`mailto:${officer.email}`}
-											className="mt-1 block w-full break-words px-1 text-center text-[10px] leading-4 text-zinc-500 underline decoration-zinc-700 underline-offset-2 hover:text-zinc-300"
+											className="mt-1 block w-full break-all px-1 text-center text-[10px] leading-4 text-zinc-500 underline decoration-zinc-700 underline-offset-2 hover:text-zinc-300"
 										>
 											{officer.email}
 										</a>
@@ -403,14 +400,14 @@ export default function AboutUsPage() {
 								height={33}
 								alt="MXR Logo"
 							/>
-							<span className="self-center whitespace-nowrap text-xl font-semibold text-[#E4E4E7]">
+							<span className="self-center text-base font-semibold text-[#E4E4E7] sm:text-lg lg:text-xl">
 								Milpitas Xtreme Robotics
 							</span>
 						</Link>
 					</div>
 					<div>
 						<ul
-							className={`${ibmPlexMono.className} flex flex-nowrap items-center gap-5 overflow-x-auto whitespace-nowrap pb-1 text-sm font-medium text-[#D4D4D8]`}
+							className={`${ibmPlexMono.className} flex flex-nowrap items-center gap-4 overflow-x-auto whitespace-nowrap pb-1 text-sm font-medium text-[#D4D4D8] sm:gap-5`}
 						>
 							<li className="shrink-0">
 								<Link href="/about-us" className="hover:text-[#E4E4E7]">

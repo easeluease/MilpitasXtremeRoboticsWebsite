@@ -63,7 +63,7 @@ export default function AboutUsPage() {
 				></div>
 				<div aria-hidden className="absolute inset-0 bg-black/55"></div>
 
-				<div className="absolute bottom-8 left-6 z-10 lg:bottom-14 lg:left-14">
+				<div className="absolute bottom-8 left-4 z-10 sm:left-6 lg:bottom-14 lg:left-14">
 					<motion.div
 						initial={{ opacity: 0, y: 80 }}
 						whileInView={{ opacity: 1, y: 0 }}
@@ -77,8 +77,8 @@ export default function AboutUsPage() {
 				</div>
 			</section>
 
-			<section className="w-full px-6 py-10 lg:px-10 lg:py-12">
-				<div className="mx-auto w-full max-w-5xl px-2 py-2 lg:px-4 lg:py-4">
+			<section className="w-full px-4 py-10 sm:px-6 lg:px-10 lg:py-12">
+				<div className="mx-auto w-full max-w-5xl px-1 py-2 sm:px-2 lg:px-4 lg:py-4">
 					<div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 lg:gap-0">
 						<div className="border-zinc-800/70 px-2 lg:border-r lg:px-8">
 							<p className={`${ibmPlexMono.className} text-sm text-zinc-400 lg:text-base`}>Years</p>
@@ -114,7 +114,7 @@ export default function AboutUsPage() {
 				</div>
 			</section>
 
-			<section className="relative mx-auto flex w-full max-w-5xl flex-col gap-18 px-6 pb-20 lg:px-10 lg:pb-24">
+			<section className="relative mx-auto flex w-full max-w-5xl flex-col gap-14 px-4 pb-20 sm:px-6 lg:gap-18 lg:px-10 lg:pb-24">
 				<div>
 					<TypewriterEffect
 						words={missionHeaderWords}
@@ -147,7 +147,7 @@ export default function AboutUsPage() {
 				</div>
 			</section>
 
-			<section className="w-full px-6 pb-10 pt-2 lg:px-10 lg:pb-14 lg:pt-2">
+			<section className="w-full px-4 pb-10 pt-2 sm:px-6 lg:px-10 lg:pb-14 lg:pt-2">
 				<div className="mx-auto flex w-full max-w-5xl flex-col items-center">
 					<TypewriterEffect
 						words={photosHeaderWords}
@@ -174,14 +174,14 @@ export default function AboutUsPage() {
 									height={33}
 									alt="MXR Logo"
 								/>
-								<span className="self-center whitespace-nowrap text-xl font-semibold text-[#E4E4E7]">
+								<span className="self-center text-base font-semibold text-[#E4E4E7] sm:text-lg lg:text-xl">
 									Milpitas Xtreme Robotics
 								</span>
 							</Link>
 						</div>
 						<div>
 							<ul
-								className={`${ibmPlexMono.className} flex flex-nowrap items-center gap-5 overflow-x-auto whitespace-nowrap pb-1 text-sm font-medium text-[#D4D4D8]`}
+								className={`${ibmPlexMono.className} flex flex-nowrap items-center gap-4 overflow-x-auto whitespace-nowrap pb-1 text-sm font-medium text-[#D4D4D8] sm:gap-5`}
 							>
 								<li className="shrink-0">
 									<Link href="/about-us" className="hover:text-[#E4E4E7]">
