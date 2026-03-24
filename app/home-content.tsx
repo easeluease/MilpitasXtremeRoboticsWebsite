@@ -118,13 +118,13 @@ export default function Home() {
     <div className="flex min-h-screen flex-col items-center">
       <div className="sticky top-20 z-0 h-screen w-full overflow-hidden">
         <div className="hero-sticky w-full overflow-hidden">
-          <BackgroundLines className="mt-4 lg:-mt-20">
+          <BackgroundLines className="mt-4 lg:-mt-20 h-screen">
             <div className="z-100 inset-0 relative flex items-center justify-center px-4 pt-12 text-center text-white sm:px-6 lg:px-16 lg:pt-36 xl:px-24">
               <div className="flex flex-col lg:flex-row gap-4 items-center justify-center">
                 <div className="basis-3/5 flex flex-col items-center justify-center">
                   <motion.div
                     initial={{ opacity: 0, y: 300 }}
-                    whileInView={{ opacity: 1, y: 150 }}
+                    animate={{ opacity: 1, y: 150 }}
                     transition={{ duration: 1.5, ease: [0.4, 0.0, 0.2, 1] }}
                     viewport={{ once: true }}
                     className="inline-block bg-linear-to-r from-[#b2c4ff] to-white bg-clip-text text-center text-5xl leading-[0.95] font-bold text-transparent drop-shadow-2xl sm:text-6xl lg:text-8xl"
@@ -238,7 +238,7 @@ export default function Home() {
               className="grid w-full grid-cols-1 items-start gap-8 md:grid-cols-[1.25fr_0.75fr] lg:gap-10"
             >
               <div className="flex flex-col justify-start space-y-6 pt-0">
-                <div className="-mb-4 text-7xl leading-none font-bold text-[#A1A1AA] sm:text-8xl lg:-mb-8 lg:text-[10rem]">
+                <div className="mb-4 text-7xl leading-none font-bold text-[#A1A1AA] sm:text-8xl lg:mb-8 lg:text-[10rem]">
                   01
                 </div>
                 <div>
@@ -306,7 +306,7 @@ export default function Home() {
               className="grid w-full grid-cols-1 items-start gap-8 md:grid-cols-2 lg:gap-10"
             >
               <div className="order-2 flex flex-col justify-start space-y-6 pt-0 z-10">
-                <div className="-mb-4 text-7xl leading-none font-bold text-[#A1A1AA] sm:text-8xl lg:-mb-8 lg:text-[10rem]">
+                <div className="mb-4 text-7xl leading-none font-bold text-[#A1A1AA] sm:text-8xl lg:mb-8 lg:text-[10rem]">
                   02
                 </div>
                 <div>
@@ -373,7 +373,7 @@ export default function Home() {
               className="grid w-full grid-cols-1 items-start gap-8 md:grid-cols-2 lg:gap-10"
             >
               <div className="flex flex-col justify-start space-y-6 pt-0">
-                <div className="-mb-4 text-7xl leading-none font-bold text-[#A1A1AA] sm:text-8xl lg:-mb-8 lg:text-[10rem]">
+                <div className="mb-4 text-7xl leading-none font-bold text-[#A1A1AA] sm:text-8xl lg:mb-8 lg:text-[10rem]">
                   03
                 </div>
                 <div>
@@ -482,7 +482,7 @@ export default function Home() {
                 </div>
                 <div>
                   <ul
-                    className={`${ibmPlexMono.className} flex flex-nowrap items-center gap-4 overflow-x-auto whitespace-nowrap pb-1 text-base font-medium text-[#D4D4D8] sm:gap-5`}
+                    className={`${ibmPlexMono.className} flex flex-nowrap items-center gap-4 overflow-x-auto whitespace-nowrap pb-1 text-sm font-medium text-[#D4D4D8] sm:gap-5`}
                   >
                     <li className="shrink-0">
                       <LinkPreview
