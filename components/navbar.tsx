@@ -141,7 +141,7 @@ export function NavbarDemo() {
   }, [activeItem, pathname]);
 
   return (
-    <Navbar>
+    <Navbar suppressHydrationWarning>
       {/* Desktop Navigation */}
       <NavBody>
         <NavbarLogo />

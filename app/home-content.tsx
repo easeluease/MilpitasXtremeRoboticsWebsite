@@ -173,7 +173,7 @@ export default function Home() {
         <div className="flex flex-col items-center space-y-0">
           <div
             id="about-section"
-            className="sticky top-0 z-0 flex min-h-screen w-full flex-col items-center justify-center overflow-hidden px-4 py-16 pb-20 sm:px-6 lg:px-16 lg:py-24 lg:pb-28 xl:px-24"
+            className="sticky top-0 z-0 flex min-h-screen w-full flex-col items-center justify-center overflow-hidden px-4 py-16 pb-20 sm:px-6 sm:py-16 sm:pb-20 lg:px-16 lg:py-24 lg:pb-28 xl:px-24"
           >
             <div
               aria-hidden
@@ -219,7 +219,7 @@ export default function Home() {
             </div>
           </div>
 
-          <motion.div className="relative z-20 mt-20 flex w-full flex-col items-center justify-center space-y-14 bg-[#0A0A0A] px-4 pb-20 pt-14 sm:mt-24 sm:px-6 lg:mt-[20vh] lg:space-y-20 lg:px-16 lg:pt-20 xl:px-24">
+          <motion.div className="relative z-20 mt-20 flex w-full flex-col items-center justify-center space-y-14 bg-[#0A0A0A] px-4 py-16 pb-20 sm:mt-24 sm:px-6 sm:py-16 sm:pb-20 lg:mt-[20vh] lg:space-y-20 lg:px-16 lg:py-24 lg:pb-28 xl:px-24">
             <motion.div
               initial={{ opacity: 0, y: -50 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -288,7 +288,7 @@ export default function Home() {
                   translateDepth={24}
                   className="rounded-full overflow-visible"
                 >
-                  <div className="relative flex h-52 w-52 items-center justify-center overflow-hidden rounded-full bg-[#111111] ring-1 ring-[#b2c4ff]/30 shadow-[0_0_36px_rgba(178,196,255,0.24)] sm:h-56 sm:w-56 lg:h-64 lg:w-64">
+                  <div className="relative flex h-52 w-52 items-center justify-center overflow-hidden rounded-full bg-black ring-1 ring-[#b2c4ff]/30 shadow-[0_0_36px_rgba(178,196,255,0.24)] sm:h-56 sm:w-56 lg:h-64 lg:w-64">
                     <Image
                       src="/Images/vex.png"
                       alt="VEX Robotics"
@@ -355,7 +355,7 @@ export default function Home() {
                   translateDepth={24}
                   className="rounded-full overflow-visible"
                 >
-                  <div className="relative flex h-52 w-52 items-center justify-center overflow-hidden rounded-full bg-[#111111] ring-1 ring-[#b2c4ff]/30 shadow-[0_0_36px_rgba(178,196,255,0.24)] sm:h-56 sm:w-56 lg:h-64 lg:w-64">
+                  <div className="relative flex h-52 w-52 items-center justify-center overflow-hidden rounded-full bg-black ring-1 ring-[#b2c4ff]/30 shadow-[0_0_36px_rgba(178,196,255,0.24)] sm:h-56 sm:w-56 lg:h-64 lg:w-64">
                     <Image
                       src="/Images/FTC.jpg"
                       alt="First Tech Competition"
@@ -400,7 +400,7 @@ export default function Home() {
                   translateDepth={24}
                   className="rounded-full overflow-visible"
                 >
-                  <div className="relative flex h-52 w-52 items-center justify-center overflow-hidden rounded-full bg-[#111111] ring-1 ring-[#b2c4ff]/30 shadow-[0_0_36px_rgba(178,196,255,0.24)] sm:h-56 sm:w-56 lg:h-64 lg:w-64">
+                  <div className="relative flex h-52 w-52 items-center justify-center overflow-hidden rounded-full bg-black ring-1 ring-[#b2c4ff]/30 shadow-[0_0_36px_rgba(178,196,255,0.24)] sm:h-56 sm:w-56 lg:h-64 lg:w-64">
                     <Image
                       src="/logo.png"
                       alt="Outreach & Education"

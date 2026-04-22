@@ -77,7 +77,7 @@ export default function AboutUsPage() {
 				</div>
 			</section>
 
-			<section className="w-full px-4 py-10 sm:px-6 lg:px-10 lg:py-12">
+			<section className="w-full px-4 py-10 sm:px-6 sm:py-10 lg:px-10 lg:py-12">
 				<div className="mx-auto w-full max-w-5xl px-1 py-2 sm:px-2 lg:px-4 lg:py-4">
 					<div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 lg:gap-0">
 						<div className="border-zinc-800/70 px-2 lg:border-r lg:px-8">
@@ -114,7 +114,7 @@ export default function AboutUsPage() {
 				</div>
 			</section>
 
-			<section className="relative mx-auto flex w-full max-w-5xl flex-col gap-14 px-4 pb-20 sm:px-6 lg:gap-18 lg:px-10 lg:pb-24">
+			<section className="relative mx-auto flex w-full max-w-5xl flex-col gap-14 px-4 py-10 pb-20 sm:px-6 sm:py-10 sm:pb-20 lg:gap-18 lg:px-10 lg:py-12 lg:pb-24">
 				<div>
 					<TypewriterEffect
 						words={missionHeaderWords}
@@ -147,7 +147,7 @@ export default function AboutUsPage() {
 				</div>
 			</section>
 
-			<section className="w-full px-4 pb-10 pt-2 sm:px-6 lg:px-10 lg:pb-14 lg:pt-2">
+			<section className="w-full px-4 py-10 sm:px-6 sm:py-10 lg:px-10 lg:py-12">
 				<div className="mx-auto flex w-full max-w-5xl flex-col items-center">
 					<TypewriterEffect
 						words={photosHeaderWords}

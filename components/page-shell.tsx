@@ -19,7 +19,7 @@ export default function PageShell({
   links = [],
 }: PageShellProps) {
   return (
-    <main className="mx-auto flex min-h-[calc(100vh-5rem)] w-full max-w-5xl flex-col px-4 py-12 sm:px-6 sm:py-14 lg:px-10 lg:py-16">
+    <main className="mx-auto flex min-h-[calc(100vh-5rem)] w-full max-w-5xl flex-col px-4 py-12 sm:px-6 sm:py-12 lg:px-10 lg:py-16">
       <p className="mb-3 text-xs uppercase tracking-[0.18em] text-zinc-400 sm:text-sm sm:tracking-[0.2em]">{subtitle}</p>
       <h1 className="mb-5 text-3xl font-semibold text-zinc-100 sm:text-4xl lg:text-6xl">{title}</h1>
       <p className="max-w-3xl text-sm leading-7 text-zinc-300 sm:text-base sm:leading-8 lg:text-lg">{description}</p>
