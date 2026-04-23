@@ -170,7 +170,7 @@ export default function AboutUsPage() {
 						transition={{ duration: 1.1 }}
 						viewport={{ once: true }}
 					>
-						<h1 className="bg-linear-to-r from-[#b2c4ff] to-white bg-clip-text text-4xl font-bold leading-none tracking-tight text-transparent sm:text-5xl lg:text-7xl">
+						<h1 className="bg-linear-to-r from-[#b2c4ff] to-white bg-clip-text text-4xl font-bold leading-[1.05] tracking-tight pb-1 text-transparent sm:text-5xl lg:text-7xl">
 							Officers
 						</h1>
 					</motion.div>
@@ -269,7 +269,7 @@ export default function AboutUsPage() {
 				) : null}
 			</AnimatePresence>
 
-			<section className="w-full px-4 py-10 sm:px-6 lg:px-10 lg:py-12">
+			<section className="w-full px-4 py-10 sm:px-6 sm:py-10 lg:px-10 lg:py-12">
 				<div className="mx-auto w-full max-w-5xl px-1 py-2 sm:px-2 lg:px-4 lg:py-4">
 					<div className="mb-5 flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
 						<TypewriterEffect
@@ -435,7 +435,7 @@ export default function AboutUsPage() {
 								</Link>
 							</li>
 							<li className="shrink-0">
-								<Link href="/blog" className="hover:text-[#E4E4E7]">
+								<Link href="/wip" className="hover:text-[#E4E4E7]">
 									Blog
 								</Link>
 							</li>
