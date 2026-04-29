@@ -107,7 +107,7 @@ export default function MarsPage() {
           The MARS (Milpitas Applied Robotics and Science) Program is a student-driven initiative led by Milpitas Xtreme Robotics (MXR) to teach students the fundamentals of coding, the design process, and other scientific concepts, targeting middle and elementary students to strengthen their technical and problem-solving skills. The workshop takes place at Milpitas High School and local community centers, serving 50-100 students per session. Through collaboration with local MXR mentors, students complete projects that have tangible impact and strengthen their problem-solving skills.
           </p>
           <p className={`${ibmPlexMono.className} mt-4 text-sm leading-7 text-zinc-400`}>
-            Summer MARS 2026: <span className="text-zinc-200">Coming soon.</span>
+            Summer MARS 2026: <span className="text-zinc-200">June 15-19</span>
           </p>
           <p className={`${ibmPlexMono.className} mt-2 text-sm leading-7 text-zinc-400`}>
             Questions:{" "}
