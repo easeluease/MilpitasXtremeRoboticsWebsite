@@ -6,12 +6,16 @@ import { cn } from "@/lib/utils";
 export const CometCard = ({
   rotateDepth = 17.5,
   translateDepth = 20,
+  hoverScale = 1.1,
   className,
+  cardClassName,
   children,
 }: {
   rotateDepth?: number;
   translateDepth?: number;
+  hoverScale?: number;
   className?: string;
+  cardClassName?: string;
   children: React.ReactNode;
 }) => {
   const ref = useRef<HTMLDivElement>(null);
@@ -83,11 +87,11 @@ export const CometCard = ({
         }}
         initial={{ scale: 1, z: 0 }}
         whileHover={{
-          scale: 1.1,
+          scale: hoverScale,
           z: 70,
           transition: { duration: 0.2 },
         }}
-        className="relative rounded-full"
+        className={cn("relative rounded-full", cardClassName)}
       >
         {children}
       </motion.div>

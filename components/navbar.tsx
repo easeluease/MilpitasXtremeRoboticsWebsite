@@ -45,18 +45,18 @@ export function NavbarDemo() {
       link: "/outreach",
       children: [
         { name: "MARS", link: "/mars" },
-        { name: "LEGO ROBOTICS", link: "/lego-robotics" },
+        { name: "Sinnott Classes", link: "/sinnott-robotics" },
       ],
     },
     { name: "Sponsors", link: "/sponsors" },
-    { name: "Blog", link: "/blog" },
+    { name: "Blog", link: "/wip" },
     {
       name: "More",
       clickable: false,
       children: [
-        { name: "Contact", link: "/contact" },
-        { name: "Socials", link: "/socials" },
-        { name: "Constitution", link: "/constitution" },
+        { name: "Contact", link: "/wip" },
+        { name: "Socials", link: "/wip" },
+        { name: "Constitution", link: "/wip" },
       ],
     },
   ];
@@ -71,13 +71,13 @@ export function NavbarDemo() {
     { name: "VEX - TEAM 1669Y", link: "/vex/1669y" },
     { name: "FTC", link: "/ftc" },
     { name: "Outreach", link: "/outreach" },
-    { name: "Outreach - MARS", link: "/mars" },
-    { name: "Outreach - LEGO ROBOTICS", link: "/lego-robotics" },
+    { name: "Programs - MARS", link: "/mars" },
+    { name: "Programs - Sinnott Classes", link: "/sinnott-robotics" },
     { name: "Sponsors", link: "/sponsors" },
-    { name: "Blog", link: "/blog" },
-    { name: "More - Contact", link: "/contact" },
-    { name: "More - Socials", link: "/socials" },
-    { name: "More - Constitution", link: "/constitution" },
+    { name: "Blog", link: "/wip" },
+    { name: "More - Contact", link: "/wip" },
+    { name: "More - Socials", link: "/wip" },
+    { name: "More - Constitution", link: "/wip" },
   ];
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);

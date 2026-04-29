@@ -70,7 +70,7 @@ export default function AboutUsPage() {
 						transition={{ duration: 1.1 }}
 						viewport={{ once: true }}
 					>
-						<h1 className="bg-linear-to-r from-[#b2c4ff] to-white bg-clip-text text-4xl font-bold leading-none tracking-tight text-transparent sm:text-5xl lg:text-7xl">
+						<h1 className="bg-linear-to-r from-[#b2c4ff] to-white bg-clip-text text-4xl font-bold leading-[1.05] tracking-tight pb-1 text-transparent sm:text-5xl lg:text-7xl">
 							About Us
 						</h1>
 					</motion.div>
@@ -209,7 +209,7 @@ export default function AboutUsPage() {
 									</Link>
 								</li>
 								<li className="shrink-0">
-									<Link href="/blog" className="hover:text-[#E4E4E7]">
+									<Link href="/wip" className="hover:text-[#E4E4E7]">
 										Blog
 									</Link>
 								</li>

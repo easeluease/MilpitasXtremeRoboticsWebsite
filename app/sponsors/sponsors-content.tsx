@@ -69,6 +69,7 @@ const sponsorTiers = [
     tier: "silver" as const,
     name: "Silver",
     amount: "$499+",
+    cardClassName: "from-slate-500/18 via-zinc-900/80 to-zinc-900/90",
     benefits: [
       "Logo on website",
       "Distribute swag",
@@ -80,8 +81,9 @@ const sponsorTiers = [
     tier: "gold" as const,
     name: "Gold",
     amount: "$1,000+",
+    cardClassName: "from-amber-400/20 via-zinc-900/82 to-zinc-900/92",
     benefits: [
-      "Everything in Silver",
+      "All benefits of Silver tier",
       "Company visit",
       "Logo on shirts",
       "2-minute company intro",
@@ -92,8 +94,9 @@ const sponsorTiers = [
     tier: "platinum" as const,
     name: "Platinum",
     amount: "$3,500+",
+    cardClassName: "from-[#b2c4ff]/22 via-zinc-900/80 to-zinc-900/92",
     benefits: [
-      "Everything in Gold",
+      "All benefits of Gold tier",
       "Recruiting materials shared",
       "Resume and LinkedIn access",
       "Direct email to club members",
@@ -129,14 +132,14 @@ export default function SponsorsPage() {
             transition={{ duration: 1.1 }}
             viewport={{ once: true }}
           >
-            <h1 className="bg-linear-to-r from-[#b2c4ff] to-white bg-clip-text text-4xl font-bold leading-none tracking-tight text-transparent sm:text-5xl lg:text-7xl">
+            <h1 className="bg-linear-to-r from-[#b2c4ff] to-white bg-clip-text text-4xl font-bold leading-[1.05] tracking-tight pb-1 text-transparent sm:text-5xl lg:text-7xl">
               Sponsors
             </h1>
           </motion.div>
         </div>
       </section>
 
-      <section className="w-full px-4 py-10 sm:px-6 lg:px-10 lg:py-12">
+      <section className="w-full px-4 py-10 sm:px-6 sm:py-10 lg:px-10 lg:py-12">
         <div className="mx-auto grid w-full max-w-5xl grid-cols-1 gap-10 lg:grid-cols-2 lg:gap-14">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
@@ -186,7 +189,6 @@ export default function SponsorsPage() {
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.08 }}
-            viewport={{ once: true }}
             className="w-full lg:pt-2"
           >
             <div className="mx-auto w-full sm:w-[88%] lg:w-[74%]">
@@ -205,7 +207,7 @@ export default function SponsorsPage() {
         </div>
       </section>
 
-      <section className="w-full px-4 py-10 sm:px-6 lg:px-10 lg:py-12">
+      <section className="w-full px-4 py-10 sm:px-6 sm:py-10 lg:px-10 lg:py-12">
         <div className="mx-auto w-full max-w-5xl">
           <div className="mb-8 max-w-2xl">
             <TypewriterEffect
@@ -222,7 +224,7 @@ export default function SponsorsPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.45, delay: index * 0.08 }}
                 viewport={{ once: true }}
-                className="rounded-2xl border border-zinc-800/80 bg-white/[0.02] p-6"
+                className="rounded-2xl border border-zinc-800/80 bg-white/2 p-6"
               >
                 <div className="pt-1">
                   <div>
@@ -249,7 +251,7 @@ export default function SponsorsPage() {
         </div>
       </section>
 
-      <section className="w-full px-4 py-10 sm:px-6 lg:px-10 lg:py-12">
+      <section className="w-full px-4 py-10 sm:px-6 sm:py-10 lg:px-10 lg:py-12">
         <div className="mx-auto w-full max-w-5xl">
           <div className="mb-5">
             <TypewriterEffect
@@ -272,7 +274,7 @@ export default function SponsorsPage() {
                 {tierInfo.sponsors.length > 0 ? (
                   <ul className="grid w-full grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
                     {tierInfo.sponsors.map((sponsor) => (
-                      <div key={sponsor.name} className="w-full rounded-2xl border border-zinc-700/50 bg-zinc-950/40 p-6">
+                      <li key={sponsor.name} className="w-full rounded-2xl border border-zinc-700/50 bg-zinc-950/40 p-6">
                         {sponsor.logo && (
                           <div className="mb-4 flex justify-center">
                             <Image
@@ -302,7 +304,7 @@ export default function SponsorsPage() {
                             </a>
                           </div>
                         )}
-                      </div>
+                      </li>
                     ))}
                   </ul>
                 ) : (
@@ -400,7 +402,7 @@ export default function SponsorsPage() {
                 </li>
                 <li className="shrink-0">
                   <LinkPreview
-                    url="/#blog"
+                    url="/wip"
                     className="text-[#D4D4D8] hover:text-[#E4E4E7]"
                     width={170}
                     height={105}

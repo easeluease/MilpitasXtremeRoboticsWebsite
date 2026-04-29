@@ -2,12 +2,12 @@
 
 import Image from "next/image";
 import { IBM_Plex_Mono } from "next/font/google";
+import dynamic from "next/dynamic";
 
 import React from "react";
 import { BackgroundLines } from "@/components/ui/background-lines";
 import { TypewriterEffect } from "@/components/ui/typewriter-effect";
 import { HeroHighlight } from "@/components/ui/hero-highlight";
-import { CometCard } from "@/components/ui/comet-card";
 import { HoverBorderGradient } from "@/components/ui/hover-border-gradient";
 import { LinkPreview } from "@/components/ui/link-preview";
 import {
@@ -20,6 +20,13 @@ import {
 import Link from "next/link";
 
 import { motion } from "framer-motion";
+
+const CometCard = dynamic(
+  () => import("@/components/ui/comet-card").then((mod) => mod.CometCard),
+  {
+    ssr: false,
+  },
+);
 
 const ibmPlexMono = IBM_Plex_Mono({
   weight: ["200", "300", "400", "500", "600", "700"],
@@ -163,6 +170,7 @@ export default function Home() {
               alt="Scroll Down"
               width={150}
               height={27}
+              sizes="(min-width: 1024px) 208px, (min-width: 640px) 176px, 144px"
               className="h-auto w-36 sm:w-44 lg:w-52"
             />
           </button>
@@ -265,12 +273,12 @@ export default function Home() {
                     the season.
                   </div>
                   <div className="mt-6">
-                    <Link href="/#vex" className="inline-block">
+                    <Link href="/vex" className="inline-block">
                       <HoverBorderGradient
                         containerClassName="rounded-full"
                         className="bg-[#0B0B0B] text-[#E4E4E7] px-6 py-2.5 text-base lg:text-lg"
                       >
-                        <span>Learn More</span>
+                        <span>Learn More About VEX</span>
                       </HoverBorderGradient>
                     </Link>
                   </div>
@@ -294,6 +302,8 @@ export default function Home() {
                       alt="VEX Robotics"
                       width={320}
                       height={320}
+                      quality={75}
+                      sizes="(min-width: 1024px) 224px, (min-width: 640px) 192px, 176px"
                       className="relative z-10 h-44 w-44 rounded-full object-cover sm:h-48 sm:w-48 lg:h-56 lg:w-56"
                     />
                   </div>
@@ -305,7 +315,7 @@ export default function Home() {
               id="ftc"
               className="grid w-full grid-cols-1 items-start gap-8 md:grid-cols-2 lg:gap-10"
             >
-              <div className="order-2 flex flex-col justify-start space-y-6 pt-0 z-10">
+              <div className="order-2 z-10 flex flex-col justify-start space-y-6 pt-0 lg:-ml-2.5">
                 <div className="mb-4 text-7xl leading-none font-bold text-[#A1A1AA] sm:text-8xl lg:mb-8 lg:text-[10rem]">
                   02
                 </div>
@@ -332,12 +342,12 @@ export default function Home() {
                     design process to judges alongside on-field performance.
                   </div>
                   <div className="mt-6">
-                    <Link href="/#ftc" className="inline-block">
+                    <Link href="/ftc" className="inline-block">
                       <HoverBorderGradient
                         containerClassName="rounded-full"
                         className="bg-[#0B0B0B] text-[#E4E4E7] px-6 py-2.5 text-base lg:text-lg"
                       >
-                        <span>Learn More</span>
+                        <span>Learn More About FTC</span>
                       </HoverBorderGradient>
                     </Link>
                   </div>
@@ -361,6 +371,8 @@ export default function Home() {
                       alt="First Tech Competition"
                       width={320}
                       height={320}
+                      quality={75}
+                      sizes="(min-width: 1024px) 224px, (min-width: 640px) 192px, 176px"
                       className="relative z-10 h-44 w-44 rounded-full object-cover sm:h-48 sm:w-48 lg:h-56 lg:w-56"
                     />
                   </div>
@@ -384,8 +396,18 @@ export default function Home() {
                   <p
                     className={`${ibmPlexMono.className} text-[#A1A1AA] leading-relaxed text-lg lg:text-xl`}
                   >
-                    Placeholder
+                    Our outreach program focuses on inspiring younger students and the community about STEM and robotics. We host workshops, demonstrations, and mentoring sessions to introduce robotics concepts and encourage participation in engineering and technology.
                   </p>
+                  <div className="mt-6">
+                    <Link href="/outreach" className="inline-block">
+                      <HoverBorderGradient
+                        containerClassName="rounded-full"
+                        className="bg-[#0B0B0B] text-[#E4E4E7] px-6 py-2.5 text-base lg:text-lg"
+                      >
+                        <span>Learn More About Outreach</span>
+                      </HoverBorderGradient>
+                    </Link>
+                  </div>
                 </div>
               </div>
               <motion.div
@@ -406,6 +428,8 @@ export default function Home() {
                       alt="Outreach & Education"
                       width={320}
                       height={320}
+                      quality={75}
+                      sizes="(min-width: 1024px) 224px, (min-width: 640px) 192px, 176px"
                       className="relative z-10 h-44 w-44 rounded-full object-cover sm:h-48 sm:w-48 lg:h-56 lg:w-56"
                     />
                   </div>
@@ -473,6 +497,8 @@ export default function Home() {
                       className="me-3 h-auto w-auto object-contain"
                       width={41}
                       height={33}
+                      quality={75}
+                      sizes="41px"
                       alt="MXR Logo"
                     />
                     <span className="self-center text-lg font-semibold text-[#E4E4E7] sm:text-xl lg:text-2xl">
@@ -547,7 +573,7 @@ export default function Home() {
                     </li>
                     <li className="shrink-0">
                       <LinkPreview
-                        url="/#blog"
+                        url="/wip"
                         className="text-[#D4D4D8] hover:text-[#E4E4E7]"
                         width={170}
                         height={105}
