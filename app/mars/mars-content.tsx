@@ -84,12 +84,11 @@ export default function MarsPage() {
         />
         <div aria-hidden className="absolute inset-0 bg-black/55" />
 
-        <div className="absolute bottom-8 left-4 z-10 sm:left-6 lg:bottom-14 lg:left-14">
+        <div className="absolute inset-0 z-10 flex items-center justify-center px-4 text-center sm:inset-auto sm:bottom-8 sm:left-6 sm:block sm:px-0 sm:text-left lg:bottom-14 lg:left-14">
           <motion.div
-            initial={{ opacity: 0, y: 80 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.1 }}
-            viewport={{ once: true }}
           >
             <h1 className="bg-linear-to-r from-[#b2c4ff] to-white bg-clip-text text-4xl font-bold leading-[1.05] tracking-tight pb-1 text-transparent sm:text-5xl lg:text-7xl">
               MARS
@@ -105,10 +104,7 @@ export default function MarsPage() {
             className="mb-5 inline-block w-fit bg-linear-to-r from-[#b2c4ff] to-white bg-clip-text text-left text-3xl font-bold leading-[1.15] pb-2 lg:text-5xl"
           />
           <p className={`${ibmPlexMono.className} max-w-4xl text-sm leading-7 text-zinc-300 lg:text-base`}>
-            MARS (Milpitas Applied Robotics and Science) is MXR&apos;s hands-on STEM
-            outreach program for younger students. Kids learn through fun projects in
-            robotics, coding, and science, with support from Milpitas Xtreme Robotics
-            mentors.
+          The MARS (Milpitas Applied Robotics and Science) Program is a student-driven initiative led by Milpitas Xtreme Robotics (MXR) to teach students the fundamentals of coding, the design process, and other scientific concepts, targeting middle and elementary students to strengthen their technical and problem-solving skills. The workshop takes place at Milpitas High School and local community centers, serving 50-100 students per session. Through collaboration with local MXR mentors, students complete projects that have tangible impact and strengthen their problem-solving skills.
           </p>
           <p className={`${ibmPlexMono.className} mt-4 text-sm leading-7 text-zinc-400`}>
             Summer MARS 2026: <span className="text-zinc-200">Coming soon.</span>

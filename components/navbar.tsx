@@ -12,21 +12,22 @@ import {
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Search } from "lucide-react";
-import { motion } from "framer-motion";
+import { ChevronDown, Search } from "lucide-react";
+import { AnimatePresence, motion } from "framer-motion";
 
 export function NavbarDemo() {
   const pathname = usePathname();
   const desktopNavRef = useRef<HTMLDivElement | null>(null);
   const desktopItemRefs = useRef<Record<string, HTMLDivElement | null>>({});
   const [bubble, setBubble] = useState({ x: 0, width: 0, opacity: 0 });
-
+// Basically converted into parent/child verion,  because it is more cleaner for the phone view, everything else is the same
   const navItems = [
     { name: "Home", link: "/" },
     {
       name: "About",
       link: "/about-us",
       children: [
+        { name: "About Us", link: "/about-us" },
         { name: "Officers", link: "/about-us/officers" },
         { name: "Achievements", link: "/about-us/achievements" },
       ],
@@ -44,6 +45,7 @@ export function NavbarDemo() {
       name: "Outreach",
       link: "/outreach",
       children: [
+        { name: "Outreach Overview", link: "/outreach" },
         { name: "MARS", link: "/mars" },
         { name: "Sinnott Classes", link: "/sinnott-robotics" },
       ],
@@ -61,27 +63,23 @@ export function NavbarDemo() {
     },
   ];
 
-  const mobileNavItems = [
-    { name: "Home", link: "/" },
-    { name: "About", link: "/about-us" },
-    { name: "About - Officers", link: "/about-us/officers" },
-    { name: "About - Achievements", link: "/about-us/achievements" },
-    { name: "VEX", link: "/vex" },
-    { name: "VEX - TEAM 1669X", link: "/vex/1669x" },
-    { name: "VEX - TEAM 1669Y", link: "/vex/1669y" },
-    { name: "FTC", link: "/ftc" },
-    { name: "Outreach", link: "/outreach" },
-    { name: "Programs - MARS", link: "/mars" },
-    { name: "Programs - Sinnott Classes", link: "/sinnott-robotics" },
-    { name: "Sponsors", link: "/sponsors" },
-    { name: "Blog", link: "/wip" },
-    { name: "More - Contact", link: "/wip" },
-    { name: "More - Socials", link: "/wip" },
-    { name: "More - Constitution", link: "/wip" },
-  ];
-
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeItem, setActiveItem] = useState("Home");
+  const [expandedMobileItems, setExpandedMobileItems] = useState<Record<string, boolean>>({});
+
+  const toggleMobileExpanded = (name: string) => {
+    setExpandedMobileItems((prev) => ({ ...prev, [name]: !prev[name] }));
+  };
+
+  const closeMobileMenu = () => {
+    setIsMobileMenuOpen(false);
+  };
+
+  useEffect(() => {
+    if (!isMobileMenuOpen) {
+      setExpandedMobileItems({});
+    }
+  }, [isMobileMenuOpen]);
 
   useEffect(() => {
     const resolveActiveItem = () => {
@@ -254,18 +252,65 @@ export function NavbarDemo() {
 
         <MobileNavMenu
           isOpen={isMobileMenuOpen}
-          onClose={() => setIsMobileMenuOpen(false)}
+          onClose={closeMobileMenu}
         >
-          {mobileNavItems.map((item, idx) => (
-            <a
-              key={`mobile-link-${idx}`}
-              href={item.link}
-              onClick={() => setIsMobileMenuOpen(false)}
-              className="relative text-neutral-300"
-            >
-              <span className="block">{item.name}</span>
-            </a>
-          ))}
+          {navItems.map((item, idx) => {
+            if (!item.children) {
+              return (
+                <Link
+                  key={`mobile-link-${idx}`}
+                  href={item.link || "#"}
+                  onClick={closeMobileMenu}
+                  className="block w-full py-2 text-base text-neutral-200 transition hover:text-white"
+                >
+                  {item.name}
+                </Link>
+              );
+            }
+
+            const isExpanded = !!expandedMobileItems[item.name];
+
+            return (
+              <div key={`mobile-section-${idx}`} className="w-full">
+                <button
+                  type="button"
+                  onClick={() => toggleMobileExpanded(item.name)}
+                  aria-expanded={isExpanded}
+                  className="flex w-full items-center justify-between py-2 text-base text-neutral-200 transition hover:text-white"
+                >
+                  <span>{item.name}</span>
+                  <ChevronDown
+                    size={18}
+                    className={`transition-transform duration-200 ${isExpanded ? "rotate-180" : ""}`}
+                  />
+                </button>
+                <AnimatePresence initial={false}>
+                  {isExpanded && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
+                      className="overflow-hidden"
+                    >
+                      <div className="ml-3 flex flex-col gap-1 border-l border-neutral-800 pl-3 pt-1 pb-2">
+                        {item.children.map((child, childIdx) => (
+                          <Link
+                            key={`mobile-child-${idx}-${childIdx}`}
+                            href={child.link}
+                            onClick={closeMobileMenu}
+                            className="block py-1.5 text-sm text-neutral-400 transition hover:text-white"
+                          >
+                            {child.name}
+                          </Link>
+                        ))}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            );
+          })}
         </MobileNavMenu>
       </MobileNav>
     </Navbar>

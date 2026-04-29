@@ -125,12 +125,11 @@ export default function SponsorsPage() {
           className="absolute inset-0 bg-black/55"
         />
 
-        <div className="absolute bottom-8 left-4 z-10 sm:left-6 lg:bottom-14 lg:left-14">
+        <div className="absolute inset-0 z-10 flex items-center justify-center px-4 text-center sm:inset-auto sm:bottom-8 sm:left-6 sm:block sm:px-0 sm:text-left lg:bottom-14 lg:left-14">
           <motion.div
-            initial={{ opacity: 0, y: 80 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.1 }}
-            viewport={{ once: true }}
           >
             <h1 className="bg-linear-to-r from-[#b2c4ff] to-white bg-clip-text text-4xl font-bold leading-[1.05] tracking-tight pb-1 text-transparent sm:text-5xl lg:text-7xl">
               Sponsors
@@ -247,6 +246,20 @@ export default function SponsorsPage() {
                 </div>
               </motion.div>
             ))}
+          </div>
+
+          <div className="mt-10 flex justify-center">
+            <a
+              href="mailto:mxrmhs@gmail.com"
+              className="inline-block"
+            >
+              <HoverBorderGradient
+                containerClassName="rounded-full"
+                className="bg-[#0B0B0B] px-6 py-3 text-sm font-medium text-[#E4E4E7] sm:text-base"
+              >
+                <span>Become a Sponsor</span>
+              </HoverBorderGradient>
+            </a>
           </div>
         </div>
       </section>

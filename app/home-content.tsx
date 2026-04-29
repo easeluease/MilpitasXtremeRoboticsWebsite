@@ -33,17 +33,6 @@ const ibmPlexMono = IBM_Plex_Mono({
   subsets: ["latin"],
 });
 
-const typeWriterWords = [
-  {
-    text: "About",
-    className: "text-[#E4E4E7]",
-  },
-  {
-    text: "Us",
-    className: "text-[#E4E4E7]",
-  },
-];
-
 const programsTypewriterWords = [
   {
     text: "Programs",
@@ -157,10 +146,10 @@ export default function Home() {
         >
           <button
             onClick={() => {
-              const aboutSection =
-                document.getElementById("about-section");
-              if (aboutSection) {
-                smoothScrollToElement(aboutSection, 1500);
+              const programsSection =
+                document.getElementById("programs-section");
+              if (programsSection) {
+                smoothScrollToElement(programsSection, 1500);
               }
             }}
             className="cursor-pointer border-none bg-transparent p-0 transition-opacity hover:opacity-80"
@@ -179,55 +168,9 @@ export default function Home() {
 
       <div className="relative z-10 w-full bg-[#0A0A0A] overflow-visible">
         <div className="flex flex-col items-center space-y-0">
-          <div
-            id="about-section"
-            className="sticky top-0 z-0 flex min-h-screen w-full flex-col items-center justify-center overflow-hidden px-4 py-16 pb-20 sm:px-6 sm:py-16 sm:pb-20 lg:px-16 lg:py-24 lg:pb-28 xl:px-24"
-          >
-            <div
-              aria-hidden
-              className="absolute inset-0 bg-[url('/Images/ClubPicture.png')] bg-cover bg-center blur-[3px] scale-105"
-            ></div>
-            <div aria-hidden className="absolute inset-0 bg-black/55"></div>
-            <div className="relative z-10 max-w-4xl">
-              <motion.div
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                transition={{ duration: 1 }}
-                viewport={{ once: true }}
-                className="mb-10 text-center lg:mb-16"
-              >
-                <TypewriterEffect
-                  words={typeWriterWords}
-                  className="justify-center text-5xl font-bold sm:text-6xl lg:text-7xl"
-                />
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1, delay: 0.3 }}
-                viewport={{ once: true }}
-                className={`${ibmPlexMono.className} space-y-6 text-center text-[#E4E4E7]`}
-              >
-                <p className="text-base leading-relaxed sm:text-lg lg:text-xl">
-                  In a nutshell, Milpitas Xtreme Robotics is the official
-                  robotics club of Milpitas High. We provide the students of
-                  Milpitas High a chance to discover, create, or nurture a
-                  passion for what the Silicon Valley is famed for - technology.
-                  MXR offer our members a chance to use the skills they learn in
-                  their classrooms on something more tangible. However, we also
-                  highly promote certain key concepts in our club; productive
-                  teamwork with fellow club members, innovation in engineering
-                  techniques used, and ingenuity in overcoming obstacles.
-                  Milpitas Xtreme Robotics encourages our members to get off
-                  their computers and out of their videos games, and instead
-                  take a shot at bringing to life our very own creations.
-                </p>
-              </motion.div>
-            </div>
-          </div>
-
-          <motion.div className="relative z-20 mt-20 flex w-full flex-col items-center justify-center space-y-14 bg-[#0A0A0A] px-4 py-16 pb-20 sm:mt-24 sm:px-6 sm:py-16 sm:pb-20 lg:mt-[20vh] lg:space-y-20 lg:px-16 lg:py-24 lg:pb-28 xl:px-24">
+          <motion.div
+            id="programs-section"
+            className="relative z-20 flex w-full flex-col items-center justify-center space-y-14 bg-[#0A0A0A] px-4 py-16 pb-20 sm:px-6 sm:py-16 sm:pb-20 lg:space-y-20 lg:px-16 lg:py-24 lg:pb-28 xl:px-24">
             <motion.div
               initial={{ opacity: 0, y: -50 }}
               whileInView={{ opacity: 1, y: 0 }}

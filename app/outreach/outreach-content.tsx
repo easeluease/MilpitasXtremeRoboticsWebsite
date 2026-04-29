@@ -63,12 +63,11 @@ export default function OutreachPage() {
         />
         <div aria-hidden className="absolute inset-0 bg-black/55" />
 
-        <div className="absolute bottom-8 left-4 z-10 sm:left-6 lg:bottom-14 lg:left-14">
+        <div className="absolute inset-0 z-10 flex items-center justify-center px-4 text-center sm:inset-auto sm:bottom-8 sm:left-6 sm:block sm:px-0 sm:text-left lg:bottom-14 lg:left-14">
           <motion.div
-            initial={{ opacity: 0, y: 80 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.1 }}
-            viewport={{ once: true }}
           >
             <h1 className="bg-linear-to-r from-[#b2c4ff] to-white bg-clip-text text-4xl font-bold leading-[1.05] tracking-tight pb-1 text-transparent sm:text-5xl lg:text-7xl">
               Outreach
@@ -92,7 +91,7 @@ export default function OutreachPage() {
             />
             <p className={`${ibmPlexMono.className} text-sm leading-7 text-zinc-300 sm:text-base`}>
               MARS introduces students to engineering, coding, and science through
-              hands-on projects.
+              hands-on projects. 
             </p>
             <ul className="mt-6 space-y-3">
               {marsHighlights.map((highlight) => (
@@ -368,7 +367,7 @@ export default function OutreachPage() {
             </div>
           </div>
         </div>
-      </footer>
+      </footer> 
     </div>
   );
 }
