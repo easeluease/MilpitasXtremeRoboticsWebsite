@@ -87,7 +87,7 @@ export default function DustParticleTitle({
     ctx.font = fontStr;
 
     const blockH   = LINES.length * lineGap;
-    const blockTopY = H * 0.30 - blockH / 2 + fontSize * 0.15;
+    const blockTopY = H * 0.20 - blockH / 2 + fontSize * 0.15;
 
 
     type LetterInfo = { char: string; x: number; y: number; w: number; idx: number };
@@ -118,7 +118,7 @@ export default function DustParticleTitle({
     const result: Particle[] = [];
 
     letters.forEach((lb) => {
-      const pad  = Math.ceil(fontSize * 0.25);
+      const pad  = Math.ceil(fontSize * 0.1);
       const ow   = Math.ceil(lb.w) + pad * 2;
       const oh   = Math.ceil(fontSize * 1.4);
 
