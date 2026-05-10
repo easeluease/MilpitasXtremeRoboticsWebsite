@@ -27,9 +27,9 @@ interface WaveGridProps {
 }
 
 export default function WaveGrid({
-  density = 120,
-  gridSize = 100,
-  mouseStrength = 8,
+  density = 500,
+  gridSize = 300,
+  mouseStrength = 10,
   mouseRadius = 20,
   waveSpeed = 0.001,
   waveAmplitude = 2,
@@ -57,8 +57,8 @@ export default function WaveGrid({
       0.1,
       1000
     );
-    camera.position.set(0, 50, 50);
-    camera.lookAt(0, 50, 0);
+    camera.position.set(0, -10, 50);
+    camera.lookAt(0, 10, 0);
 
     // === Renderer ===
     const renderer = new THREE.WebGLRenderer({
