@@ -27,7 +27,6 @@ import {
   UnderlineHoverMotion,
 } from "@/components/ui/home-animations";
 
-// ── Dust particle hero title ─────────────────────────────────────────────────
 import DustParticleTitle from "@/components/ui/dust-particle-title";
 
 const CometCard = dynamic(
@@ -63,7 +62,6 @@ export default function Home() {
   return (
     <div className="flex min-h-screen flex-col items-center">
 
-      {/* ── Sticky hero ─────────────────────────────────────────────────────── */}
       <div className="sticky top-20 z-0 h-screen w-full overflow-hidden">
         <div className="hero-sticky relative w-full h-screen overflow-hidden bg-[#0A0A0A]">
 
@@ -78,15 +76,10 @@ export default function Home() {
             />
           </div>
 
-          {/*
-           * Dust-particle canvas — "Milpitas Xtreme" and "Robotics" assemble
-           * letter-by-letter from scattered dust particles. Moving the cursor
-           * over the text disturbs and repels the particles.
-           */}
+          
           <DustParticleTitle className="absolute inset-0 z-10 w-full h-full" />
         </div>
 
-        {/* Scroll-down button */}
         <ScrollButtonMotion className="absolute bottom-25 left-1/2 z-40 -translate-x-1/2">
           <button
             onClick={() => {
@@ -107,7 +100,6 @@ export default function Home() {
         </ScrollButtonMotion>
       </div>
 
-      {/* ── Main content ────────────────────────────────────────────────────── */}
       <div className="relative z-10 w-full bg-[#0A0A0A] overflow-visible">
         <div className="flex flex-col items-center space-y-0">
 
@@ -122,7 +114,6 @@ export default function Home() {
               />
             </ProgramsHeaderMotion>
 
-            {/* VEX */}
             <div id="vex" className="grid w-full grid-cols-1 items-start gap-8 md:grid-cols-[1.25fr_0.75fr] lg:gap-10">
               <div className="flex flex-col justify-start space-y-6 pt-0">
                 <div className="mb-4 text-7xl leading-none font-bold text-[#A1A1AA] sm:text-8xl lg:mb-8 lg:text-[10rem]">01</div>
@@ -150,7 +141,6 @@ export default function Home() {
               </CardRevealMotion>
             </div>
 
-            {/* FTC */}
             <div id="ftc" className="grid w-full grid-cols-1 items-start gap-8 md:grid-cols-2 lg:gap-10">
               <div className="order-2 z-10 flex flex-col justify-start space-y-6 pt-0 lg:-ml-2.5">
                 <div className="mb-4 text-7xl leading-none font-bold text-[#A1A1AA] sm:text-8xl lg:mb-8 lg:text-[10rem]">02</div>
@@ -178,7 +168,6 @@ export default function Home() {
               </CardRevealMotion>
             </div>
 
-            {/* Outreach */}
             <div id="outreach" className="grid w-full grid-cols-1 items-start gap-8 md:grid-cols-2 lg:gap-10">
               <div className="flex flex-col justify-start space-y-6 pt-0">
                 <div className="mb-4 text-7xl leading-none font-bold text-[#A1A1AA] sm:text-8xl lg:mb-8 lg:text-[10rem]">03</div>
@@ -206,7 +195,6 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Sponsor CTA */}
           <HeroHighlight
             containerClassName="relative z-30 mt-0 h-[18rem] lg:h-[18rem] bg-[#0A0A0A]"
             className="relative z-30 w-full space-y-6 bg-transparent px-4 pt-8 sm:px-6 lg:px-10"
@@ -224,7 +212,6 @@ export default function Home() {
             </Link>
           </HeroHighlight>
 
-          {/* Footer */}
           <footer className="relative z-30 w-full bg-[#0B0B0D] border-t border-zinc-800/70">
             <div className="mx-auto w-full max-w-7xl px-4 py-4 sm:px-6 lg:py-5">
               <div className="md:flex md:justify-between">
