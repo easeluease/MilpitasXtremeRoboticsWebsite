@@ -1,344 +1,277 @@
 "use client";
+import React, { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { 
+  QrCode, 
+  ArrowUpRight, 
+  Instagram, 
+  Github, 
+  Youtube, 
+  Linkedin, 
+  MonitorPlay 
+} from "lucide-react";
 
-import Image from "next/image";
-import Link from "next/link";
-import { IBM_Plex_Mono } from "next/font/google";
-import { AnimatePresence, motion } from "framer-motion";
-import { useEffect, useState } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
 import {
   DiscordLogoIcon,
   GitHubLogoIcon,
   InstagramLogoIcon,
   LinkedInLogoIcon,
-  VideoIcon,
+  VideoIcon, 
 } from "@radix-ui/react-icons";
-
-import { BackgroundGradient } from "@/components/ui/background-gradient";
-import { LinkPreview } from "@/components/ui/link-preview";
-import { TypewriterEffect } from "@/components/ui/typewriter-effect";
-
-const ibmPlexMono = IBM_Plex_Mono({
-  weight: ["200", "300", "400", "500", "600", "700"],
-  subsets: ["latin"],
-});
-
-const aboutWords = [
-  {
-    text: "About",
-    className: "supports-[background-clip:text]:text-transparent",
-  },
-  {
-    text: "MARS",
-    className: "supports-[background-clip:text]:text-transparent",
-  },
-];
-
-const picturesWords = [
-  {
-    text: "Pictures",
-    className: "supports-[background-clip:text]:text-transparent",
-  },
-];
 
 const marsPhotos = [
   {
-    src: "/Images/MARS/IMG_5969.jpg",
+    src: "/Images/MARS/IMG_3493.jpg",
     alt: "MARS classroom workshop",
   },
   {
     src: "/Images/MARS/IMG_3493.jpg",
-    alt: "MARS students and families group photo",
+    alt: "same as above",
   },
   {
     src: "/Images/MARS/Sping_MARS_2025.jpg",
-    alt: "MARS outdoor team activity",
+    alt: "MARS showcase event",
   },
 ];
 
-export default function MarsPage() {
-  const [activeSlide, setActiveSlide] = useState(0);
-
-  const goToPrevious = () => {
-    setActiveSlide((prev) => (prev - 1 + marsPhotos.length) % marsPhotos.length);
-  };
-
-  const goToNext = () => {
-    setActiveSlide((prev) => (prev + 1) % marsPhotos.length);
-  };
-
-  useEffect(() => {
-    const intervalId = window.setInterval(() => {
-      setActiveSlide((prev) => (prev + 1) % marsPhotos.length);
-    }, 5000);
-
-    return () => window.clearInterval(intervalId);
-  }, []);
-
+const StaggeredText = ({ text, className }) => {
+  const words = text.split(" ");
   return (
-    <div className="-mt-20 w-full bg-[#0A0A0A] text-white">
-      <section className="relative h-screen w-full overflow-hidden -mb-px">
-        <div
-          aria-hidden
-          className="absolute inset-0 bg-[url('/Images/ClubPicture.png')] bg-cover bg-center blur-[1px] scale-105"
-        />
-        <div aria-hidden className="absolute inset-0 bg-black/55" />
+    <motion.h2 
+      className={`flex flex-wrap gap-x-3 gap-y-1 ${className}`}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: "-10%" }}
+      variants={{
+        hidden: { opacity: 0 },
+        visible: {
+          opacity: 1,
+          transition: { staggerChildren: 0.08 }
+        }
+      }}
+    >
+      {words.map((word, i) => (
+        <motion.span
+          key={i}
+          variants={{
+            hidden: { opacity: 0, y: 40, rotate: 2 },
+            visible: { opacity: 1, y: 0, rotate: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } }
+          }}
+          className="block"
+        >
+          {word}
+        </motion.span>
+      ))}
+    </motion.h2>
+  );
+};
 
-        <div className="absolute inset-0 z-10 flex items-center justify-center px-4 text-center sm:inset-auto sm:bottom-8 sm:left-6 sm:block sm:px-0 sm:text-left lg:bottom-14 lg:left-14">
-          <motion.div
+export default function App() {
+  const { scrollYProgress } = useScroll();
+  const heroY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+  
+  return (
+    <div className="w-full bg-[#050505] text-[#E4E4E7] font-sans selection:bg-[#b2c4ff] selection:text-black overflow-hidden">
+      
+      <section className="relative h-screen w-full flex items-end p-6 md:p-12">
+        <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/80 to-transparent" />
+
+        <div className="relative z-10 w-full max-w-7xl mx-auto flex justify-between items-end pb-8">
+          <motion.h1 
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.1 }}
+            transition={{ duration: 1, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
+            className="text-6xl md:text-8xl lg:text-[10rem] font-bold tracking-tighter leading-none text-white"
           >
-            <h1 className="bg-linear-to-r from-[#b2c4ff] to-white bg-clip-text text-4xl font-bold leading-[1.05] tracking-tight pb-1 text-transparent sm:text-5xl lg:text-7xl">
-              MARS
-            </h1>
+            mars.
+          </motion.h1>
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 1 }}
+            className="hidden md:flex items-center gap-2 text-sm font-mono text-white/50"
+          >
+            <div className="w-2 h-2 rounded-full bg-[#b2c4ff] animate-pulse" />
+            Milpitas Applied Robotics
           </motion.div>
         </div>
       </section>
 
-      <section className="w-full px-4 py-10 sm:px-6 sm:py-10 lg:px-10 lg:py-12">
-        <div className="mx-auto w-full max-w-5xl">
-          <TypewriterEffect
-            words={aboutWords}
-            className="mb-5 inline-block w-fit bg-linear-to-r from-[#b2c4ff] to-white bg-clip-text text-left text-3xl font-bold leading-[1.15] pb-2 lg:text-5xl"
-          />
-          <p className={`${ibmPlexMono.className} max-w-4xl text-sm leading-7 text-zinc-300 lg:text-base`}>
-          The MARS (Milpitas Applied Robotics and Science) Program is a student-driven initiative led by Milpitas Xtreme Robotics (MXR) to teach students the fundamentals of coding, the design process, and other scientific concepts, targeting middle and elementary students to strengthen their technical and problem-solving skills. The workshop takes place at Milpitas High School and local community centers, serving 50-100 students per session. Through collaboration with local MXR mentors, students complete projects that have tangible impact and strengthen their problem-solving skills.
-          </p>
-          <p className={`${ibmPlexMono.className} mt-4 text-sm leading-7 text-zinc-400`}>
-            Summer MARS 2026: <span className="text-zinc-200">June 15-19</span>
-          </p>
-          <p className={`${ibmPlexMono.className} mt-2 text-sm leading-7 text-zinc-400`}>
-            Questions:{" "}
-            <a
-              href="mailto:milpitasxtreme.mars@gmail.com"
-              className="text-zinc-200 underline decoration-zinc-500 underline-offset-4 transition hover:text-white"
-            >
-              milpitasxtreme.mars@gmail.com
-            </a>
-          </p>
+      <section className="w-full px-6 py-24 md:py-40 max-w-7xl mx-auto">
+        <StaggeredText 
+          text="empowering the next generation of engineers." 
+          className="text-3xl md:text-5xl lg:text-6xl font-medium tracking-tight mb-12"
+        />
+
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 mt-16">
+          <div className="md:col-span-4 font-mono text-sm text-zinc-500 uppercase tracking-widest pt-2">
+            Program Overview
+          </div>
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-10%" }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="md:col-span-8 text-lg md:text-2xl leading-relaxed text-zinc-300"
+          >
+            The MARS Program is a student-driven initiative led by Milpitas Xtreme Robotics to teach students the fundamentals of coding, the design process, and scientific concepts. We target middle and elementary students to strengthen their technical and problem-solving skills through hands-on projects with tangible impact.
+          </motion.div>
         </div>
       </section>
 
-      <section className="w-full px-4 py-10 pb-14 sm:px-6 sm:py-10 lg:px-10 lg:py-12 lg:pb-18">
-        <div className="mx-auto w-full max-w-5xl">
-          <TypewriterEffect
-            words={picturesWords}
-            className="mb-5 inline-block w-fit bg-linear-to-r from-[#b2c4ff] to-white bg-clip-text text-left text-3xl font-bold leading-[1.15] pb-2 lg:text-5xl"
-          />
-
-          <div className="relative">
-            <BackgroundGradient
-              containerClassName="w-full rounded-[1.8rem]"
-              className="rounded-[1.8rem] bg-[#06080f]/95 p-2"
-            >
-              <div className="relative overflow-hidden rounded-[1.45rem]">
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={marsPhotos[activeSlide].src}
-                    initial={{ opacity: 0.25, scale: 1.02 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0.25, scale: 0.99 }}
-                    transition={{ duration: 0.35, ease: "easeOut" }}
-                  >
-                    <Image
-                      src={marsPhotos[activeSlide].src}
-                      alt={marsPhotos[activeSlide].alt}
-                      width={2048}
-                      height={2048}
-                      className="h-72 w-full object-cover sm:h-84 lg:h-[34rem]"
-                    />
-                  </motion.div>
-                </AnimatePresence>
-
-                <button
-                  type="button"
-                  onClick={goToPrevious}
-                  aria-label="Previous photo"
-                  className="absolute left-3 top-1/2 -translate-y-1/2 rounded-full border border-white/20 bg-black/55 p-2 text-white backdrop-blur-sm transition hover:bg-black/70"
-                >
-                  <ChevronLeft size={20} />
-                </button>
-
-                <button
-                  type="button"
-                  onClick={goToNext}
-                  aria-label="Next photo"
-                  className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full border border-white/20 bg-black/55 p-2 text-white backdrop-blur-sm transition hover:bg-black/70"
-                >
-                  <ChevronRight size={20} />
-                </button>
+      <section className="w-full px-6 py-12 max-w-7xl mx-auto">
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.95, y: 20 }}
+          whileInView={{ opacity: 1, scale: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className="relative group overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-zinc-900 to-black border border-white/10 p-8 md:p-14"
+        >
+          <div className="absolute -top-40 -right-40 w-96 h-96 bg-[#b2c4ff] opacity-10 blur-[100px] rounded-full group-hover:opacity-20 transition-opacity duration-700" />
+          
+          <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-12">
+            <div className="flex-1 space-y-6">
+              <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white/5 border border-white/10 font-mono text-xs text-[#b2c4ff]">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#b2c4ff]" />
+                Registrations Open
               </div>
-            </BackgroundGradient>
+              <h3 className="text-4xl md:text-5xl font-semibold tracking-tight text-white">
+                Summer MARS 2026
+              </h3>
+              <p className="text-zinc-400 max-w-md font-mono text-sm leading-relaxed">
+                Join us from <span className="text-white">June 15-19</span> at Milpitas High School. Scan the QR code to secure your spot for a week of robotics, coding, and engineering challenges.
+              </p>
+              
+              <a href="mailto:milpitasxtreme.mars@gmail.com" className="inline-flex items-center gap-2 mt-4 text-sm font-mono text-zinc-300 hover:text-white transition-colors group/link">
+                milpitasxtreme.mars@gmail.com
+                <ArrowUpRight className="w-4 h-4 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform" />
+              </a>
+            </div>
 
-            <div className="mt-4 flex items-center justify-center gap-2">
-              {marsPhotos.map((photo, index) => (
-                <button
-                  key={photo.src}
-                  type="button"
-                  onClick={() => setActiveSlide(index)}
-                  aria-label={`Go to photo ${index + 1}`}
-                  className={`h-2.5 rounded-full transition ${
-                    activeSlide === index ? "w-8 bg-[#b2c4ff]" : "w-2.5 bg-zinc-600 hover:bg-zinc-500"
-                  }`}
-                />
-              ))}
+            <div className="shrink-0">
+              <div className="bg-white p-4 rounded-3xl shadow-2xl rotate-3 hover:rotate-0 transition-transform duration-500">
+                <div className="w-48 h-48 md:w-56 md:h-56 overflow-hidden rounded-2xl flex items-center justify-center bg-zinc-100">
+                  <img 
+                    src="Images/MARS/qrcodesummer.png"
+                    alt="Summer MARS QR Code" 
+                    className="w-full h-full object-cover"
+                    onError={(e) => {
+                      e.currentTarget.style.display = 'none';
+                      if(e.currentTarget.parentElement) {
+                        e.currentTarget.parentElement.innerHTML = '<span class="text-zinc-400 font-mono text-xs text-center p-4">Put QR Image here</span>';
+                      }
+                    }}
+                  />
+                </div>
+              </div>
             </div>
           </div>
+        </motion.div>
+      </section>
+
+      <section className="w-full px-6 py-24 md:py-40 max-w-7xl mx-auto">
+        <div className="flex justify-between items-end mb-16">
+          <h2 className="text-3xl md:text-4xl font-medium tracking-tight">in action.</h2>
+          <span className="font-mono text-sm text-zinc-500">03 Shots</span>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8">
+          {marsPhotos.map((photo, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-10%" }}
+              transition={{ duration: 0.8, delay: index * 0.15, ease: [0.16, 1, 0.3, 1] }}
+              className={`relative overflow-hidden rounded-3xl bg-zinc-900 group ${
+                index === 0 ? "md:col-span-8 md:h-[32rem]" : 
+                index === 1 ? "md:col-span-4 md:h-[32rem]" : 
+                "md:col-span-12 md:h-[40rem]"
+              }`}
+            >
+              <img
+                src={photo.src}
+                alt={photo.alt}
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000 ease-out"
+              />
+              <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-700" />
+              <div className="absolute bottom-6 left-6 right-6 flex justify-between items-end opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                <span className="font-mono text-xs bg-black/50 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/10 text-white">
+                  {photo.alt}
+                </span>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </section>
 
-      <footer className="relative z-30 w-full border-t border-zinc-800/70 bg-[#0B0B0D] p-5">
-        <div className="mx-auto w-full max-w-7xl">
-          <div className="md:flex md:justify-between">
-            <div className="mb-4 md:mb-0">
-              <Link href="/" className="flex items-center">
-                <Image
-                  src="/logo.png"
-                  className="me-3 h-auto w-auto object-contain"
-                  width={41}
-                  height={33}
-                  alt="MXR Logo"
-                />
-                <span className="self-center text-base font-semibold text-[#E4E4E7] sm:text-lg lg:text-xl">
-                  Milpitas Xtreme Robotics
-                </span>
-              </Link>
+      <footer className="w-full border-t border-white/10 bg-[#050505] px-6 py-12 text-zinc-400">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+          <div className="flex items-center gap-4">
+            <div className="w-8 h-8 bg-zinc-800 rounded-lg flex items-center justify-center text-white font-bold text-xs">
+              MXR
             </div>
-            <div>
-              <ul
-                className={`${ibmPlexMono.className} flex flex-nowrap items-center gap-4 overflow-x-auto whitespace-nowrap pb-1 text-sm font-medium text-[#D4D4D8] sm:gap-5`}
-              >
-                <li className="shrink-0">
-                  <LinkPreview
-                    url="/about-us"
-                    className="text-[#D4D4D8] hover:text-[#E4E4E7]"
-                    width={170}
-                    height={105}
-                    isStatic
-                    imageSrc="/Images/ClubPicture.png"
-                  >
-                    About
-                  </LinkPreview>
-                </li>
-                <li className="shrink-0">
-                  <LinkPreview
-                    url="/vex"
-                    className="text-[#D4D4D8] hover:text-[#E4E4E7]"
-                    width={170}
-                    height={105}
-                    isStatic
-                    imageSrc="/Images/vex.png"
-                    previewClassName="scale-125"
-                  >
-                    VEX
-                  </LinkPreview>
-                </li>
-                <li className="shrink-0">
-                  <LinkPreview
-                    url="/ftc"
-                    className="text-[#D4D4D8] hover:text-[#E4E4E7]"
-                    width={170}
-                    height={105}
-                    isStatic
-                    imageSrc="/Images/FTC.jpg"
-                  >
-                    FTC
-                  </LinkPreview>
-                </li>
-                <li className="shrink-0">
-                  <LinkPreview
-                    url="/programs"
-                    className="text-[#D4D4D8] hover:text-[#E4E4E7]"
-                    width={170}
-                    height={105}
-                    isStatic
-                    imageSrc="/logo.png"
-                  >
-                    Programs
-                  </LinkPreview>
-                </li>
-                <li className="shrink-0">
-                  <LinkPreview
-                    url="/sponsors"
-                    className="text-[#D4D4D8] hover:text-[#E4E4E7]"
-                    width={170}
-                    height={105}
-                    isStatic
-                    imageSrc="/team.png"
-                  >
-                    Sponsors
-                  </LinkPreview>
-                </li>
-                <li className="shrink-0">
-                  <LinkPreview
-                    url="/wip"
-                    className="text-[#D4D4D8] hover:text-[#E4E4E7]"
-                    width={170}
-                    height={105}
-                    isStatic
-                    imageSrc="/logo.png"
-                  >
-                    Blog
-                  </LinkPreview>
-                </li>
-              </ul>
-            </div>
+            <span className="font-medium text-white tracking-tight">Milpitas Xtreme Robotics</span>
           </div>
-          <hr className="my-4 border-zinc-700/80 sm:mx-auto lg:my-5" />
-          <div className="sm:flex sm:items-center sm:justify-between">
-            <span className={`${ibmPlexMono.className} text-sm text-[#A1A1AA] sm:text-center`}>
-              Copyright 2026 Milpitas Xtreme Robotics
-            </span>
-            <div className="mt-2 flex sm:mt-0 sm:justify-center">
-              <a
-                href="https://www.instagram.com/milpitasxrobotics/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="ms-4 text-[#9CA3AF] hover:text-[#E4E4E7]"
-                aria-label="Instagram"
-              >
-                <InstagramLogoIcon className="h-4 w-4" />
-              </a>
-              <a
-                href="https://discord.gg/MZYKRq3cvw"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="ms-4 text-[#9CA3AF] hover:text-[#E4E4E7]"
-                aria-label="Discord"
-              >
-                <DiscordLogoIcon className="h-4 w-4" />
-              </a>
-              <a
-                href="https://www.youtube.com/@MilpitasXtremeRobotics"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="ms-4 text-[#9CA3AF] hover:text-[#E4E4E7]"
-                aria-label="YouTube"
-              >
-                <VideoIcon className="h-4 w-4" />
-              </a>
-              <a
-                href="https://www.linkedin.com/company/milpitas-xtreme-robotics/posts/?feedView=all"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="ms-4 text-[#9CA3AF] hover:text-[#E4E4E7]"
-                aria-label="LinkedIn"
-              >
-                <LinkedInLogoIcon className="h-4 w-4" />
-              </a>
-              <a
-                href="https://github.com/milpitasxr"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="ms-4 text-[#9CA3AF] hover:text-[#E4E4E7]"
-                aria-label="GitHub"
-              >
-                <GitHubLogoIcon className="h-4 w-4" />
-              </a>
-            </div>
+
+          <div className="flex gap-6 font-mono text-sm">
+            <a href="#" className="hover:text-white transition-colors">About</a>
+            <a href="#" className="hover:text-white transition-colors">VEX</a>
+            <a href="#" className="hover:text-white transition-colors">FTC</a>
+            <a href="#" className="hover:text-white transition-colors">Programs</a>
           </div>
+
+          <div className="flex gap-4">
+            <a
+              href="https://www.instagram.com/milpitasxrobotics/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="ms-4 text-[#9CA3AF] hover:text-[#E4E4E7]"
+              aria-label="Instagram"
+            >
+              <InstagramLogoIcon className="h-4 w-4" />
+            </a>
+            <a
+              href="https://discord.gg/MZYKRq3cvw"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="ms-4 text-[#9CA3AF] hover:text-[#E4E4E7]"
+              aria-label="Discord"
+            >
+              <DiscordLogoIcon className="h-4 w-4" />
+            </a>
+            <a
+              href="https://www.youtube.com/@MilpitasXtremeRobotics"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="ms-4 text-[#9CA3AF] hover:text-[#E4E4E7]"
+              aria-label="YouTube"
+            >
+              <VideoIcon className="h-4 w-4" />
+            </a>
+            <a
+              href="https://www.linkedin.com/company/milpitas-xtreme-robotics/posts/?feedView=all"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="ms-4 text-[#9CA3AF] hover:text-[#E4E4E7]"
+              aria-label="LinkedIn"
+            >
+              <LinkedInLogoIcon className="h-4 w-4" />
+            </a>
+            <a
+              href="https://github.com/milpitasxr"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="ms-4 text-[#9CA3AF] hover:text-[#E4E4E7]"
+              aria-label="GitHub"
+            >
+              <GitHubLogoIcon className="h-4 w-4" />
+            </a>
+          </div>
+        </div>
+        <div className="max-w-7xl mx-auto mt-12 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center font-mono text-xs text-zinc-600">
+          <span>&copy; 2026 Milpitas Xtreme Robotics</span>
+          <span>Designed with purpose.</span>
         </div>
       </footer>
     </div>

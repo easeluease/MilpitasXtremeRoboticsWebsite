@@ -9,7 +9,7 @@ import {
   GitHubLogoIcon,
   InstagramLogoIcon,
   LinkedInLogoIcon,
-  VideoIcon,
+  VideoIcon, 
 } from "@radix-ui/react-icons";
 
 import { LinkPreview } from "@/components/ui/link-preview";
