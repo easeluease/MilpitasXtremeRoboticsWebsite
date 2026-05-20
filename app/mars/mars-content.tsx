@@ -1,16 +1,9 @@
 "use client";
-import React, { useRef } from "react";
+import React from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { 
-  QrCode, 
-  ArrowUpRight, 
-  Instagram, 
-  Github, 
-  Youtube, 
-  Linkedin, 
-  MonitorPlay 
+  ArrowUpRight 
 } from "lucide-react";
-
 import {
   DiscordLogoIcon,
   GitHubLogoIcon,
@@ -68,7 +61,6 @@ const StaggeredText = ({ text, className }) => {
 
 export default function App() {
   const { scrollYProgress } = useScroll();
-  const heroY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
   
   return (
     <div className="w-full bg-[#050505] text-[#E4E4E7] font-sans selection:bg-[#b2c4ff] selection:text-black overflow-hidden">
@@ -77,14 +69,25 @@ export default function App() {
         <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/80 to-transparent" />
 
         <div className="relative z-10 w-full max-w-7xl mx-auto flex justify-between items-end pb-8">
-          <motion.h1 
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
-            className="text-6xl md:text-8xl lg:text-[10rem] font-bold tracking-tighter leading-none text-white"
-          >
-            mars.
-          </motion.h1>
+          <div className="relative">
+            <motion.h1 
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
+              className="relative z-10 text-6xl md:text-8xl lg:text-[10rem] font-bold tracking-tighter leading-none text-white"
+            >
+              mars.
+            </motion.h1>
+            <motion.img 
+              src="/Images/MARS/marslogo.png"
+              alt=""
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 0.3, scale: 5 }}
+              transition={{ duration: 1.2, delay: 0.8 }}
+              className="absolute top-1/3 left-1/2 -translate-x-20 -translate-y-1/2 w-[115%] h-auto z-0 pointer-events-none select-none filter blur-[1px]"
+            />
+          </div>
+
           <motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -131,10 +134,7 @@ export default function App() {
           
           <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-12">
             <div className="flex-1 space-y-6">
-              <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white/5 border border-white/10 font-mono text-xs text-[#b2c4ff]">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#b2c4ff]" />
-                Registrations Open
-              </div>
+             
               <h3 className="text-4xl md:text-5xl font-semibold tracking-tight text-white">
                 Summer MARS 2026
               </h3>
@@ -158,7 +158,7 @@ export default function App() {
                     onError={(e) => {
                       e.currentTarget.style.display = 'none';
                       if(e.currentTarget.parentElement) {
-                        e.currentTarget.parentElement.innerHTML = '<span class="text-zinc-400 font-mono text-xs text-center p-4">Put QR Image here</span>';
+                        e.currentTarget.parentElement.innerHTML = '<span class="text-zinc-400 font-mono text-xs text-center p-4">QR Code Placeholder</span>';
                       }
                     }}
                   />
@@ -222,49 +222,19 @@ export default function App() {
           </div>
 
           <div className="flex gap-4">
-            <a
-              href="https://www.instagram.com/milpitasxrobotics/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="ms-4 text-[#9CA3AF] hover:text-[#E4E4E7]"
-              aria-label="Instagram"
-            >
+            <a href="https://www.instagram.com/milpitasxrobotics/" target="_blank" rel="noopener noreferrer" className="ms-4 text-[#9CA3AF] hover:text-[#E4E4E7]" aria-label="Instagram">
               <InstagramLogoIcon className="h-4 w-4" />
             </a>
-            <a
-              href="https://discord.gg/MZYKRq3cvw"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="ms-4 text-[#9CA3AF] hover:text-[#E4E4E7]"
-              aria-label="Discord"
-            >
+            <a href="https://discord.gg/MZYKRq3cvw" target="_blank" rel="noopener noreferrer" className="ms-4 text-[#9CA3AF] hover:text-[#E4E4E7]" aria-label="Discord">
               <DiscordLogoIcon className="h-4 w-4" />
             </a>
-            <a
-              href="https://www.youtube.com/@MilpitasXtremeRobotics"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="ms-4 text-[#9CA3AF] hover:text-[#E4E4E7]"
-              aria-label="YouTube"
-            >
+            <a href="https://www.youtube.com/@MilpitasXtremeRobotics" target="_blank" rel="noopener noreferrer" className="ms-4 text-[#9CA3AF] hover:text-[#E4E4E7]" aria-label="YouTube">
               <VideoIcon className="h-4 w-4" />
             </a>
-            <a
-              href="https://www.linkedin.com/company/milpitas-xtreme-robotics/posts/?feedView=all"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="ms-4 text-[#9CA3AF] hover:text-[#E4E4E7]"
-              aria-label="LinkedIn"
-            >
+            <a href="https://www.linkedin.com/company/milpitas-xtreme-robotics/posts/?feedView=all" target="_blank" rel="noopener noreferrer" className="ms-4 text-[#9CA3AF] hover:text-[#E4E4E7]" aria-label="LinkedIn">
               <LinkedInLogoIcon className="h-4 w-4" />
             </a>
-            <a
-              href="https://github.com/milpitasxr"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="ms-4 text-[#9CA3AF] hover:text-[#E4E4E7]"
-              aria-label="GitHub"
-            >
+            <a href="https://github.com/milpitasxr" target="_blank" rel="noopener noreferrer" className="ms-4 text-[#9CA3AF] hover:text-[#E4E4E7]" aria-label="GitHub">
               <GitHubLogoIcon className="h-4 w-4" />
             </a>
           </div>
